@@ -14,7 +14,7 @@ WORKDIR "/src/LODFinals"
 RUN dotnet build "LODFinals.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "LODFinals.csproj" -c Release -o /app/publish --self-contained --runtime linux-x64 -o out
+RUN dotnet publish "LODFinals.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
