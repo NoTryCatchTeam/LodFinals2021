@@ -12,4 +12,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build ./LODFinals.Api/ --file Dockerfile --tag NTCApi:latest
+      run: docker build ./LODFinals.Api/ --file Dockerfile --tag nts-api:latest
