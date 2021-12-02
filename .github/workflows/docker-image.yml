@@ -18,7 +18,7 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     - name: Build the API Docker image
-      run: docker build . --file ./LODFinals.Api/Dockerfile --tag ntc-api:latest
+      run: docker build . --file ./LODFinals.Api/Dockerfile --tag ${{secrets.DOCKER_USER}}/ntc-api:latest
       
     - name: Docker push API image
-      run: docker push ntc-api
+      run: docker push ${{secrets.DOCKER_USER}}/ntc-api
