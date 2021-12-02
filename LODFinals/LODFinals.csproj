@@ -7,6 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="nginx.conf" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.7" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.7" PrivateAssets="all" />
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
@@ -30,8 +34,20 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Content Include="nginx.conf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
       <Folder Include="wwwroot\images" />
       <Folder Include="Services\" />
       <Folder Include="Components\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="docker-compose.yaml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 </Project>
