@@ -21,4 +21,4 @@ jobs:
       run: docker build . --file ./LODFinals.Api/Dockerfile --tag ntc-api:latest
       
     - name: Docker push API image
-      run: docker push ${{secrets.DOCKER_USER}}/ntc-api
+      run: docker push ntc-api
