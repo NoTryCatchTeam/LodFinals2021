@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker CI API
 
 on:
   push:
@@ -11,5 +11,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file ./LODFinals.Api/Dockerfile --tag nts-api:latest
+    - name: docker login
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USER}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
+    - name: Build the API Docker image
+      run: docker build . --file ./LODFinals.Api/Dockerfile --tag ntc-api:latest
+      
+    - name: Docker push API image
+      run: docker push ${{secrets.DOCKER_USER}}/lod-final-2021
