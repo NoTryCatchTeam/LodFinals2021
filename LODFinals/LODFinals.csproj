@@ -9,6 +9,9 @@
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.7" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.7" PrivateAssets="all" />
         <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+        <PackageReference Include="Blazored.SessionStorage" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="5.0.12" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="5.0.12" />
     </ItemGroup>
 
     <ItemGroup>
@@ -26,6 +29,7 @@
 
     <ItemGroup>
       <Folder Include="wwwroot\images" />
+      <Folder Include="Services\" />
+      <Folder Include="Components\" />
     </ItemGroup>
-
 </Project>
