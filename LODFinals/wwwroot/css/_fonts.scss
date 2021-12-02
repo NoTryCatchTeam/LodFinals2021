@@ -1,0 +1,24 @@
+@use "colors";
+
+$types: body, header;
+$weights: ("regular": 400, "medium": 500, "bold": 600);
+$sizes: ("xs": 16px, "m": 24px, "l": 32px, "xl": 40px);
+
+@each $type in $types {
+  @each $weight-key, $weight-val in $weights {
+    @each $size-key, $size-val in $sizes {
+      .font-#{$type}__#{$size-key}__#{$weight-key} {
+        font-weight: $weight-val;
+        font-size: $size-val;
+
+        &.primary {
+          color: colors.$text-color;
+        }
+
+        &.secondary {
+          color: colors.$text-secondary-color;
+        }
+      }
+    }
+  }
+}

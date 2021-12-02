@@ -1,0 +1,290 @@
+.font-body__xs__regular {
+  font-weight: 400;
+  font-size: 16px;
+}
+.font-body__xs__regular.primary {
+  color: #00031d;
+}
+.font-body__xs__regular.secondary {
+  color: #474747;
+}
+
+.font-body__m__regular {
+  font-weight: 400;
+  font-size: 24px;
+}
+.font-body__m__regular.primary {
+  color: #00031d;
+}
+.font-body__m__regular.secondary {
+  color: #474747;
+}
+
+.font-body__l__regular {
+  font-weight: 400;
+  font-size: 32px;
+}
+.font-body__l__regular.primary {
+  color: #00031d;
+}
+.font-body__l__regular.secondary {
+  color: #474747;
+}
+
+.font-body__xl__regular {
+  font-weight: 400;
+  font-size: 40px;
+}
+.font-body__xl__regular.primary {
+  color: #00031d;
+}
+.font-body__xl__regular.secondary {
+  color: #474747;
+}
+
+.font-body__xs__medium {
+  font-weight: 500;
+  font-size: 16px;
+}
+.font-body__xs__medium.primary {
+  color: #00031d;
+}
+.font-body__xs__medium.secondary {
+  color: #474747;
+}
+
+.font-body__m__medium {
+  font-weight: 500;
+  font-size: 24px;
+}
+.font-body__m__medium.primary {
+  color: #00031d;
+}
+.font-body__m__medium.secondary {
+  color: #474747;
+}
+
+.font-body__l__medium {
+  font-weight: 500;
+  font-size: 32px;
+}
+.font-body__l__medium.primary {
+  color: #00031d;
+}
+.font-body__l__medium.secondary {
+  color: #474747;
+}
+
+.font-body__xl__medium {
+  font-weight: 500;
+  font-size: 40px;
+}
+.font-body__xl__medium.primary {
+  color: #00031d;
+}
+.font-body__xl__medium.secondary {
+  color: #474747;
+}
+
+.font-body__xs__bold {
+  font-weight: 600;
+  font-size: 16px;
+}
+.font-body__xs__bold.primary {
+  color: #00031d;
+}
+.font-body__xs__bold.secondary {
+  color: #474747;
+}
+
+.font-body__m__bold {
+  font-weight: 600;
+  font-size: 24px;
+}
+.font-body__m__bold.primary {
+  color: #00031d;
+}
+.font-body__m__bold.secondary {
+  color: #474747;
+}
+
+.font-body__l__bold {
+  font-weight: 600;
+  font-size: 32px;
+}
+.font-body__l__bold.primary {
+  color: #00031d;
+}
+.font-body__l__bold.secondary {
+  color: #474747;
+}
+
+.font-body__xl__bold {
+  font-weight: 600;
+  font-size: 40px;
+}
+.font-body__xl__bold.primary {
+  color: #00031d;
+}
+.font-body__xl__bold.secondary {
+  color: #474747;
+}
+
+.font-header__xs__regular {
+  font-weight: 400;
+  font-size: 16px;
+}
+.font-header__xs__regular.primary {
+  color: #00031d;
+}
+.font-header__xs__regular.secondary {
+  color: #474747;
+}
+
+.font-header__m__regular {
+  font-weight: 400;
+  font-size: 24px;
+}
+.font-header__m__regular.primary {
+  color: #00031d;
+}
+.font-header__m__regular.secondary {
+  color: #474747;
+}
+
+.font-header__l__regular {
+  font-weight: 400;
+  font-size: 32px;
+}
+.font-header__l__regular.primary {
+  color: #00031d;
+}
+.font-header__l__regular.secondary {
+  color: #474747;
+}
+
+.font-header__xl__regular {
+  font-weight: 400;
+  font-size: 40px;
+}
+.font-header__xl__regular.primary {
+  color: #00031d;
+}
+.font-header__xl__regular.secondary {
+  color: #474747;
+}
+
+.font-header__xs__medium {
+  font-weight: 500;
+  font-size: 16px;
+}
+.font-header__xs__medium.primary {
+  color: #00031d;
+}
+.font-header__xs__medium.secondary {
+  color: #474747;
+}
+
+.font-header__m__medium {
+  font-weight: 500;
+  font-size: 24px;
+}
+.font-header__m__medium.primary {
+  color: #00031d;
+}
+.font-header__m__medium.secondary {
+  color: #474747;
+}
+
+.font-header__l__medium {
+  font-weight: 500;
+  font-size: 32px;
+}
+.font-header__l__medium.primary {
+  color: #00031d;
+}
+.font-header__l__medium.secondary {
+  color: #474747;
+}
+
+.font-header__xl__medium {
+  font-weight: 500;
+  font-size: 40px;
+}
+.font-header__xl__medium.primary {
+  color: #00031d;
+}
+.font-header__xl__medium.secondary {
+  color: #474747;
+}
+
+.font-header__xs__bold {
+  font-weight: 600;
+  font-size: 16px;
+}
+.font-header__xs__bold.primary {
+  color: #00031d;
+}
+.font-header__xs__bold.secondary {
+  color: #474747;
+}
+
+.font-header__m__bold {
+  font-weight: 600;
+  font-size: 24px;
+}
+.font-header__m__bold.primary {
+  color: #00031d;
+}
+.font-header__m__bold.secondary {
+  color: #474747;
+}
+
+.font-header__l__bold {
+  font-weight: 600;
+  font-size: 32px;
+}
+.font-header__l__bold.primary {
+  color: #00031d;
+}
+.font-header__l__bold.secondary {
+  color: #474747;
+}
+
+.font-header__xl__bold {
+  font-weight: 600;
+  font-size: 40px;
+}
+.font-header__xl__bold.primary {
+  color: #00031d;
+}
+.font-header__xl__bold.secondary {
+  color: #474747;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+  width: 100%;
+}
+
+html {
+  overflow: hidden;
+  background-color: #f6f6f6;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=main.css.map */
