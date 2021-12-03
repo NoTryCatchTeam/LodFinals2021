@@ -7,6 +7,7 @@
 @use "sidebar";
 @use "topbar";
 @use "breadcrumbs";
+@use "modal";
 
 @use "login";
 @use "index";
@@ -69,4 +70,9 @@ input {
 .icon-16 {
   width: 16px;
   height: 16px;
+}
+
+.icon-56 {
+  width: 56px;
+  height: 56px;
 }

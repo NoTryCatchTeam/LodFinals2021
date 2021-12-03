@@ -6,6 +6,8 @@ function initIndex() {
     commonInit();
 
     VanillaTilt.init(document.querySelectorAll(".analytics-item"));
+
+    // MicroModal.show('modal-1');
 }
 
 function initLogin() {
@@ -17,6 +19,11 @@ function initPhotos() {
 }
 
 function commonInit() {
+    MicroModal.init({
+        awaitOpenAnimation: true,
+        awaitCloseAnimation: true,
+    });
+    
     topBarInit();
 }
 

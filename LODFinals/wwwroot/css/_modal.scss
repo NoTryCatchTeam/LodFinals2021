@@ -1,0 +1,136 @@
+@use "colors";
+
+.modal {
+}
+
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(26, 27, 31, 0.7);
+  backdrop-filter: blur(40px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 40px 300px;
+}
+
+.modal__container {
+  width: 100%;
+  background: linear-gradient(180deg, #474955 0%, #33353F 100%);
+  box-shadow: 0 4px 10px #1C1D23;
+  border-radius: 48px;
+  position: relative;
+}
+
+.modal__close {
+  background: transparent;
+  border: 0;
+  position: fixed;
+  top: 40px;
+  right: 50px;
+  cursor: pointer;
+}
+
+.modal__content {
+
+  > img {
+    width: 615px;
+    height: 615px;
+  }
+  
+  .right-content{
+    padding: 32px 32px 32px 24px;
+    
+    .header {
+      border-bottom: 1px dashed #4F525F;
+      padding-bottom: 16px;
+      
+      a {
+        > p{
+          background: colors.$primary-color;
+          box-shadow: 0 4px 10px rgba(26, 128, 216, 0.65);
+          border-radius: 8px;
+          padding: 4px 24px;
+        }
+      }
+    }
+    
+    .info { 
+      margin-top: 16px;
+      
+      .platform {
+        background: colors.$secondary-color;
+        border-radius: 4px;
+        padding: 2px 4px;
+      }
+    }
+  }
+}
+
+@keyframes mmfadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mmfadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes mmslideIn {
+  from {
+    transform: translateY(15%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes mmslideOut {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10%);
+  }
+}
+
+.micromodal-slide {
+  display: none;
+}
+
+.micromodal-slide.is-open {
+  display: block;
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__overlay {
+  animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__container {
+  animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__overlay {
+  animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__container {
+  animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide .modal__container,
+.micromodal-slide .modal__overlay {
+  will-change: transform;
+}
