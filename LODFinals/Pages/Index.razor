@@ -1,52 +1,7 @@
 ﻿@page "/"
 @inject IJSRuntime _js
 
-<div class="index">
-
-<div class="search-row s-row justify-space-between align-items-center animate__animated animate__fadeInDown">
-
-    <div class="search-bar s-row">
-        <img class="icon" src="images/search-normal.svg"/>
-        <input class="font-body__xs__regular" type="text" placeholder="Начните вводить для поиска"/>
-    </div>
-
-    <div class="profile">
-
-        <div class="notifications">
-            <a href="#notifications">
-                <p>
-                    <img class="icon" src="images/notification.svg"/>
-                </p>
-            </a>
-
-        </div>
-
-        <div class="photo">
-            <img src="images/telegram-peer-photo.png"/>
-        </div>
-
-        <div class="data">
-            <p class="font-body__xs__regular light">Юрий Дудь</p>
-            <p class="font-body__xs__regular rating">
-                <span class="font-body__xs__regular secondary rating-label">рейтинг:</span>
-                <img class="icon-16" src="images/heart.svg"/>
-                <span class="font-body__xs__regular light rating-value">4,6</span>
-            </p>
-        </div>
-
-        <div class="actions">
-            <a href="#actions">
-                <p>
-                    <img class="icon" src="images/arrow-down.svg"/>
-                </p>
-            </a>
-        </div>
-
-    </div>
-
-</div>
-
-<div class="analytics-row s-row animate__animated animate__fadeIn">
+<div class="index s-row animate__animated animate__fadeIn">
 
 <div class="analytics-col">
 
@@ -298,7 +253,6 @@
     </div>
 </div>
 
-</div>
 </div>
 
 @code

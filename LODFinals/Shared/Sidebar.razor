@@ -1,27 +1,70 @@
-<div class="navbar-brand">
-    <a href="">
-        <img src="images/logo.svg"/>
-    </a>
-</div>
+@inject IJSRuntime _js
 
-<div class="navbar-menu">
-    <ul class="nav-list">
-        @foreach ((string link, string icon, string text) in new List<(string, string, string)>
-        {
-            (null, "status-up", "Главная"),
-            ("/photos", "gallery-favorite", "Фотографии"),
-            ("/posts", "like-tag", "Публикации"),
-            ("/comments", "document-text", "Комментарии"),
-        })
-        {
+<div class="sidebar animate__animated animate__fadeInLeft">
+    <div class="navbar-brand">
+        <a href="">
+            <img src="images/logo.svg"/>
+        </a>
+    </div>
+
+    <div class="navbar-menu">
+        <ul class="nav-list">
             <li class="nav-item">
-                <NavLink class="nav-href" href="@(link)">
+                <NavLink class="nav-href" href="" Match="NavLinkMatch.All">
                     <div class="nav-link">
-                        <img class="icon" src="images/@(icon).svg"/>
-                        <p class="font-body__xs__regular">@text</p>
+                        @(new MarkupString(StatusUpSvg))
+                        <p class="font-body__xs__regular">Главная</p>
                     </div>
                 </NavLink>
             </li>
-        }
-    </ul>
+            @foreach ((string link, string icon, string text) in new List<(string, string, string)>
+            {
+                ("/photos", GalleryFavourite, "Фотографии"),
+                ("/posts", LikeTag, "Публикации"),
+                ("/comments", DocumentText, "Комментарии"),
+            })
+            {
+                <li class="nav-item">
+                    <NavLink class="nav-href" href="@(link)">
+                        <div class="nav-link">
+                            @(new MarkupString(icon))
+                            <p class="font-body__xs__regular">@text</p>
+                        </div>
+                    </NavLink>
+                </li>
+            }
+        </ul>
+    </div>
 </div>
+
+@code
+{
+    private string StatusUpSvg => @"<svg width=""24"" height=""24"" viewBox=""0 0 24 24"" fill=""none"" xmlns=""http://www.w3.org/2000/svg"">
+        <path d=""M6.87988 18.15V16.08"" stroke=""#696B86"" stroke-width=""1.5"" stroke-linecap=""round""/>
+            <path d=""M12 18.15V14.01"" stroke=""#696B86"" stroke-width=""1.5"" stroke-linecap=""round""/>
+                <path d=""M17.1201 18.1501V11.9301"" stroke=""#696B86"" stroke-width=""1.5"" stroke-linecap=""round""/>
+                    <path d=""M17.1199 5.84998L16.6599 6.38998C14.1099 9.36998 10.6899 11.48 6.87988 12.43"" stroke=""#696B86"" stroke-width=""1.5"" stroke-linecap=""round""/>
+                        <path d=""M14.1899 5.84998H17.1199V8.76998"" stroke=""#696B86"" stroke-width=""1.5"" stroke-linecap=""round"" stroke-linejoin=""round""/>
+                            <path d=""M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z"" stroke=""#696B86"" stroke-width=""1.5"" stroke-linecap=""round"" stroke-linejoin=""round""/>
+                                </svg>";
+
+    private string GalleryFavourite => @"<svg width=""24"" height=""24"" viewBox=""0 0 24 24"" fill=""none"" xmlns=""http://www.w3.org/2000/svg"">
+        <path d=""M9 10C10.1046 10 11 9.10457 11 8C11 6.89543 10.1046 6 9 6C7.89543 6 7 6.89543 7 8C7 9.10457 7.89543 10 9 10Z"" stroke=""#696B86"" stroke-width=""1.5"" stroke-linecap=""round"" stroke-linejoin=""round""/>
+            <path d=""M12 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22H15C20 22 22 20 22 15V11"" stroke=""#696B86"" stroke-width=""1.5"" stroke-linecap=""round"" stroke-linejoin=""round""/>
+                <path d=""M16.1199 5.11002C15.7899 4.07002 16.1799 2.78002 17.2599 2.43002C17.8299 2.25002 18.5399 2.40002 18.9399 2.95002C19.3199 2.38002 20.0499 2.24002 20.6199 2.43002C21.7099 2.78002 22.0999 4.07002 21.7699 5.11002C21.2499 6.75002 19.4499 7.61002 18.9499 7.61002C18.4399 7.61002 16.6499 6.77002 16.1199 5.11002Z"" stroke=""#696B86"" stroke-width=""1.5"" stroke-linecap=""round"" stroke-linejoin=""round""/>
+                    <path d=""M2.66992 18.9501L7.59992 15.6401C8.38992 15.1101 9.52992 15.1701 10.2399 15.7801L10.5699 16.0701C11.3499 16.7401 12.6099 16.7401 13.3899 16.0701L17.5499 12.5001C18.3299 11.8301 19.5899 11.8301 20.3699 12.5001L21.9999 13.9001"" stroke=""#696B86"" stroke-width=""1.5"" stroke-linecap=""round"" stroke-linejoin=""round""/>
+                        </svg>";
+
+    private string LikeTag => @"<svg width=""24"" height=""24"" viewBox=""0 0 24 24"" fill=""none"" xmlns=""http://www.w3.org/2000/svg"">
+        <path d=""M9.6499 13.8L11.2599 15.05C11.4699 15.26 11.9399 15.3599 12.2499 15.3599H14.2299C14.8499 15.3599 15.5299 14.89 15.6899 14.27L16.9399 10.4799C17.1999 9.74994 16.7299 9.12996 15.9499 9.12996H13.8699C13.5599 9.12996 13.2999 8.86996 13.3499 8.50996L13.6099 6.84993C13.7099 6.37993 13.3999 5.85992 12.9299 5.70992C12.5099 5.54992 11.9899 5.7599 11.7899 6.0699L9.65991 9.23995"" stroke=""#696B86"" stroke-width=""1.5"" stroke-miterlimit=""10""/>
+            <path d=""M7 13.8V8.70996C7 7.97996 7.30999 7.71997 8.03999 7.71997H8.56C9.29 7.71997 9.60001 7.97996 9.60001 8.70996V13.8C9.60001 14.53 9.29 14.79 8.56 14.79H8.03999C7.30999 14.79 7 14.53 7 13.8Z"" stroke=""#696B86"" stroke-width=""1.5"" stroke-linecap=""round"" stroke-linejoin=""round""/>
+                <path d=""M18 18.86H17.24C16.44 18.86 15.68 19.17 15.12 19.73L13.41 21.42C12.63 22.19 11.36 22.19 10.58 21.42L8.87 19.73C8.31 19.17 7.54 18.86 6.75 18.86H6C4.34 18.86 3 17.53 3 15.89V4.97998C3 3.33998 4.34 2.01001 6 2.01001H18C19.66 2.01001 21 3.33998 21 4.97998V15.89C21 17.52 19.66 18.86 18 18.86Z"" stroke=""#696B86"" stroke-width=""1.5"" stroke-miterlimit=""10"" stroke-linecap=""round"" stroke-linejoin=""round""/>
+                    </svg>";
+
+    private string DocumentText => @"<svg width=""24"" height=""24"" viewBox=""0 0 24 24"" fill=""none"" xmlns=""http://www.w3.org/2000/svg"">
+        <path d=""M22 10V15C22 20 20 22 15 22H9C4 22 2 20 2 15V9C2 4 4 2 9 2H14"" stroke=""#696B86"" stroke-width=""1.5"" stroke-linecap=""round"" stroke-linejoin=""round""/>
+            <path d=""M22 10H18C15 10 14 9 14 6V2L22 10Z"" stroke=""#696B86"" stroke-width=""1.5"" stroke-linecap=""round"" stroke-linejoin=""round""/>
+                <path d=""M7 13H13"" stroke=""#696B86"" stroke-width=""1.5"" stroke-linecap=""round"" stroke-linejoin=""round""/>
+                    <path d=""M7 17H11"" stroke=""#696B86"" stroke-width=""1.5"" stroke-linecap=""round"" stroke-linejoin=""round""/>
+                        </svg>";
+}
