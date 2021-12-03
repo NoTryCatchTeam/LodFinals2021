@@ -452,6 +452,15 @@
   margin-left: -15px;
 }
 
+.s-row {
+  display: flex;
+}
+
+.s-col {
+  display: flex;
+  flex-direction: column;
+}
+
 .col {
   flex-basis: 0;
   flex-grow: 1;
@@ -703,6 +712,8 @@
 
 .analytics-row {
   margin-top: 72px;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
 }
 .analytics-row .analytics-col {
   display: flex;
@@ -743,9 +754,40 @@
   color: #B0B0B0;
 }
 .analytics-row .analytics-col .mentions-box {
+  margin-top: 72px;
+  background: linear-gradient(180deg, #555A6E 0%, #1D1E23 38.02%);
+  border-radius: 32px;
+  padding: 1px;
+}
+.analytics-row .analytics-col .mentions-box .mentions-box-content {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  padding: 32px;
+  border-radius: 32px;
+  background: linear-gradient(180deg, #2E313C 0%, #1D1E23 38.02%);
+}
+.analytics-row .analytics-col .mentions-box .mentions-header {
+  margin-bottom: 8px;
+}
+.analytics-row .analytics-col .mentions-box .mentions-header .mentions-filter {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+.analytics-row .analytics-col .mentions-box .mention-item {
+  padding: 16px 0;
+}
+.analytics-row .analytics-col .mentions-box .mention-item .mention-details {
+  margin-top: 16px;
+}
+.analytics-row .analytics-col .mentions-box .mention-item .mention-details .mention-details-tag {
+  padding: 2px 4px;
+  background-color: #696B86;
+  border-radius: 4px;
+  margin-left: 16px;
+}
+.analytics-row .analytics-col .mentions-box .mentions-divider {
+  border: 1px dashed #4F525F;
 }
 
 * {
@@ -784,6 +826,7 @@ a {
 .page .content {
   margin-left: 280px;
   height: 100%;
+  overflow-y: scroll;
 }
 
 .icon {

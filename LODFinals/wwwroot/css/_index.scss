@@ -80,6 +80,8 @@
 
 .analytics-row {
   margin-top: 72px;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
 
   .analytics-col {
     display: flex;
@@ -125,9 +127,49 @@
     }
 
     .mentions-box {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
+      margin-top: 72px;
+      background: linear-gradient(180deg, #555A6E 0%, #1D1E23 38.02%);
+      border-radius: 32px;
+      padding: 1px;
+
+      .mentions-box-content {
+        display: flex;
+        flex-direction: column;
+        padding: 32px;
+        border-radius: 32px;
+        background: linear-gradient(180deg, #2E313C 0%, #1D1E23 38.02%);
+      }
+
+      .mentions-header {
+        margin-bottom: 8px;
+
+        .mentions-filter {
+          display: flex;
+          align-items: center;
+          column-gap: 8px;
+
+        }
+      }
+
+      .mention-item {
+        padding: 16px 0;  
+
+        .mention-details {
+          margin-top: 16px;
+
+          .mention-details-tag {
+            padding: 2px 4px;
+            background-color: colors.$secondary-color;
+            border-radius: 4px;
+            margin-left: 16px;
+          }
+        }
+      }
+      
+      .mentions-divider{
+        //height: 1px;
+        border: 1px dashed #4F525F;
+      }
     }
   }
 }

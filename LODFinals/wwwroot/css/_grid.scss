@@ -15,6 +15,15 @@
   margin-left: -15px;
 }
 
+.s-row {
+  display: flex;
+}
+
+.s-col {
+  display: flex;
+  flex-direction: column;
+}
+
 .col {
   flex-basis: 0;
   flex-grow: 1;
