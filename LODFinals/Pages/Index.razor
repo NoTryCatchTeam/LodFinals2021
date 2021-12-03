@@ -1,26 +1,313 @@
 ﻿@page "/"
+@inject IJSRuntime _js
 
-@inject SignOutSessionStateManager SignOutManager
-@inject NavigationManager nav
+<div class="index">
 
-<h1>Hello world !</h1>
+<div class="search-row s-row justify-space-between align-items-center animate__animated animate__fadeInDown">
 
-<model-viewer src="data/chelos.glb"
-              camera-controls
-              seamless-poster
-              ar
-              ar-modes="webxr scene-viewer quick-look"
-              camera-orbit="45deg 55deg"
-              exposure="0.19">
-</model-viewer>
+    <div class="search-bar s-row">
+        <img class="icon" src="images/search-normal.svg"/>
+        <input class="font-body__xs__regular" type="text" placeholder="Начните вводить для поиска"/>
+    </div>
 
-<button class="btn btn-danger" @onclick="Logout"></button>
+    <div class="profile">
 
-        
-@code{
-    public async Task Logout()
+        <div class="notifications">
+            <a href="#notifications">
+                <p>
+                    <img class="icon" src="images/notification.svg"/>
+                </p>
+            </a>
+
+        </div>
+
+        <div class="photo">
+            <img src="images/telegram-peer-photo.png"/>
+        </div>
+
+        <div class="data">
+            <p class="font-body__xs__regular light">Юрий Дудь</p>
+            <p class="font-body__xs__regular rating">
+                <span class="font-body__xs__regular secondary rating-label">рейтинг:</span>
+                <img class="icon-16" src="images/heart.svg"/>
+                <span class="font-body__xs__regular light rating-value">4,6</span>
+            </p>
+        </div>
+
+        <div class="actions">
+            <a href="#actions">
+                <p>
+                    <img class="icon" src="images/arrow-down.svg"/>
+                </p>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="analytics-row s-row animate__animated animate__fadeIn">
+
+<div class="analytics-col">
+
+    <div class="analytics-box justify-space-between">
+
+        <div class="analytics-item justify-space-between">
+            <img src="images/picture-front-color.png"/>
+
+            <p class="analytics-text">
+                <span>241</span><br/>
+                <span class="font-body__m__regular text-secondary">новая фотография</span>
+            </p>
+        </div>
+
+        <div class="analytics-item justify-space-between">
+            <img src="images/at-front-color.png"/>
+
+            <p class="analytics-text">
+                <span>12</span><br/>
+                <span class="font-body__m__regular text-secondary">упоминаний в СМИ</span>
+            </p>
+        </div>
+
+        <div class="analytics-item justify-space-between">
+            <img src="images/chat-front-color.png"/>
+
+            <p class="analytics-text">
+                <span>41</span><br/>
+                <span class="font-body__m__regular text-secondary">комментарий</span>
+            </p>
+        </div>
+
+    </div>
+
+    <div class="mentions-box">
+        <div class="mentions-box-content">
+
+            <div class="header-with-sort">
+
+                <p class="font-body__xs__bold text">Упоминания в СМИ</p>
+
+                <a href="#filters">
+                    <p class="font-body__xs__regular primary header-with-sort-filter">
+                        <span>самые популярные</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19.9201 8.94995L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.94995" stroke="#349FFC" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </p>
+                </a>
+
+            </div>
+
+            <div class="mention-item">
+
+                <p class="font-body__xs__bold light">"Сколько вы зарабатываете?" О Юрии Дуде и поколении YouTube</p>
+
+                <p class="mention-details">
+                    <span class="font-body__xs__bold primary">12 октября 2019</span>
+                    <span class="details-tag font-body__xs__bold light">LIVEJOURNAL</span>
+                </p>
+
+            </div>
+
+            <div class="items-divider"></div>
+
+            <div class="mention-item">
+
+                <p class="font-body__xs__bold light">"Сколько вы зарабатываете?" О Юрии Дуде и поколении YouTube</p>
+
+                <p class="mention-details">
+                    <span class="font-body__xs__bold primary">12 октября 2019</span>
+                    <span class="details-tag font-body__xs__bold light">LIVEJOURNAL</span>
+                </p>
+
+            </div>
+
+            <div class="items-divider"></div>
+
+            <div class="mention-item">
+
+                <p class="font-body__xs__bold light">"Сколько вы зарабатываете?" О Юрии Дуде и поколении YouTube</p>
+
+                <p class="mention-details">
+                    <span class="font-body__xs__bold primary">12 октября 2019</span>
+                    <span class="details-tag font-body__xs__bold light">LIVEJOURNAL</span>
+                </p>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+<div class="activity-box">
+    <div class="activity-box-content">
+
+        <div class="header-with-sort">
+
+            <p class="font-body__xs__bold text">Активность</p>
+
+            <a href="#filters">
+                <p class="font-body__xs__regular primary header-with-sort-filter">
+                    <span>за сутки</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.9201 8.94995L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.94995" stroke="#349FFC" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </p>
+            </a>
+
+        </div>
+
+        <div class="activity-numbers s-col">
+
+            <div class="activity-number-item s-row align-items-center justify-space-between">
+                <p class="activity-number-item-social s-row align-items-center font-body__xs__bold light">
+                    <img class="icon" src="images/InstagramLogo.svg"/>
+                    <span>yurydud</span>
+                </p>
+                <p class="activity-number-item-diff s-row align-items-center font-body__xs__regular light">
+                    <img class="icon-16" src="images/arrow-down-red.svg"/>
+                    <span>469</span>
+                    <img class="diff-up icon-16" src="images/arrow-up-green.svg"/>
+                    <span>5433</span>
+                </p>
+            </div>
+
+            <div class="activity-number-divider"></div>
+
+            <div class="activity-number-item s-row align-items-center justify-space-between">
+                <p class="activity-number-item-social s-row align-items-center font-body__xs__bold light">
+                    <img class="icon" src="images/TwitterLogo.svg"/>
+                    <span>yurydud</span>
+                </p>
+                <p class="activity-number-item-diff s-row align-items-center font-body__xs__regular light">
+                    <img class="icon-16" src="images/arrow-down-red.svg"/>
+                    <span>469</span>
+                    <img class="diff-up icon-16" src="images/arrow-up-green.svg"/>
+                    <span>5433</span>
+                </p>
+            </div>
+
+            <div class="activity-number-divider"></div>
+
+            <div class="activity-number-item s-row align-items-center justify-space-between">
+                <p class="activity-number-item-social s-row align-items-center font-body__xs__bold light">
+                    <img class="icon" src="images/TelegramLogo.svg"/>
+                    <span>yurydud</span>
+                </p>
+                <p class="activity-number-item-diff s-row align-items-center font-body__xs__regular light">
+                    <img class="icon-16" src="images/arrow-down-red.svg"/>
+                    <span>469</span>
+                    <img class="diff-up icon-16" src="images/arrow-up-green.svg"/>
+                    <span>5433</span>
+                </p>
+            </div>
+
+            <div class="activity-number-divider"></div>
+
+            <div class="activity-number-item s-row align-items-center justify-space-between">
+                <p class="activity-number-item-social s-row align-items-center font-body__xs__bold light">
+                    <img class="icon" src="images/FacebookLogo.svg"/>
+                    <span>yurydud</span>
+                </p>
+                <p class="activity-number-item-diff s-row align-items-center font-body__xs__regular light">
+                    <img class="icon-16" src="images/arrow-down-red.svg"/>
+                    <span>469</span>
+                    <img class="diff-up icon-16" src="images/arrow-up-green.svg"/>
+                    <span>5433</span>
+                </p>
+            </div>
+
+        </div>
+
+        <div class="header-with-sort margin-top-40">
+
+            <p class="font-body__xs__bold text">Комментарии</p>
+
+            <a href="#filters">
+                <p class="font-body__xs__regular primary header-with-sort-filter">
+                    <span>самые новые</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.9201 8.94995L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.94995" stroke="#349FFC" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </p>
+            </a>
+
+        </div>
+
+        <div class="activity-item">
+
+            <p class="activity-like-dislike s-row align-items-center font-body__xs__regular light">
+                <img class="icon-16" src="images/like-dislike.svg"/>
+                <span>нейтрально</span>
+            </p>
+
+            <p class="activity-desc font-body__xs__regular text-secondary">
+                Естественно. Человек прямо говорит о вещах, на которых лежит строгое вето в СМИ - при всем этом имея аудиторию больше...
+            </p>
+
+            <p class="activity-details">
+                <span class="font-body__xs__bold primary">12 октября 2019</span>
+                <span class="details-tag font-body__xs__bold light">LIVEJOURNAL</span>
+            </p>
+
+        </div>
+
+        <div class="items-divider"></div>
+
+        <div class="activity-item">
+
+            <p class="activity-like-dislike s-row align-items-center font-body__xs__regular light">
+                <img class="icon-16" src="images/dislike.svg"/>
+                <span>отрицательно</span>
+            </p>
+
+            <p class="activity-desc font-body__xs__regular text-secondary">
+                Естественно. Человек прямо говорит о вещах, на которых лежит строгое вето в СМИ - при всем этом имея аудиторию больше...
+            </p>
+
+            <p class="activity-details">
+                <span class="font-body__xs__bold primary">12 октября 2019</span>
+                <span class="details-tag font-body__xs__bold light">LIVEJOURNAL</span>
+            </p>
+
+        </div>
+
+        <div class="items-divider"></div>
+
+        <div class="activity-item">
+
+            <p class="activity-like-dislike s-row align-items-center font-body__xs__regular light">
+                <img class="icon-16" src="images/like.svg"/>
+                <span>положительно</span>
+            </p>
+
+            <p class="activity-desc font-body__xs__regular text-secondary">
+                Естественно. Человек прямо говорит о вещах, на которых лежит строгое вето в СМИ - при всем этом имея аудиторию больше...
+            </p>
+
+            <p class="activity-details">
+                <span class="font-body__xs__bold primary">12 октября 2019</span>
+                <span class="details-tag font-body__xs__bold light">LIVEJOURNAL</span>
+            </p>
+
+        </div>
+
+    </div>
+</div>
+
+</div>
+</div>
+
+@code
+{
+    protected async override Task OnAfterRenderAsync(bool firstRender)
     {
-        await SignOutManager.SetSignOutState();
-        nav.NavigateTo("authentication/logout");
+        if (firstRender)
+        {
+            await _js.InvokeVoidAsync("initIndex");
+        }
     }
 }

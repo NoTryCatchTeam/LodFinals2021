@@ -1,0 +1,27 @@
+<div class="navbar-brand">
+    <a href="">
+        <img src="images/logo.svg"/>
+    </a>
+</div>
+
+<div class="navbar-menu">
+    <ul class="nav-list">
+        @foreach ((string link, string icon, string text) in new List<(string, string, string)>
+        {
+            (null, "status-up", "Главная"),
+            ("/photos", "gallery-favorite", "Фотографии"),
+            ("/posts", "like-tag", "Публикации"),
+            ("/comments", "document-text", "Комментарии"),
+        })
+        {
+            <li class="nav-item">
+                <NavLink class="nav-href" href="@(link)">
+                    <div class="nav-link">
+                        <img class="icon" src="images/@(icon).svg"/>
+                        <p class="font-body__xs__regular">@text</p>
+                    </div>
+                </NavLink>
+            </li>
+        }
+    </ul>
+</div>

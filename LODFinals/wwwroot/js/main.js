@@ -1,5 +1,7 @@
 $(document).ready(function () {
-   
-    console.log("doc ready");
-    
+
 });
+
+function initIndex() {
+    VanillaTilt.init(document.querySelectorAll(".analytics-item"));
+}

@@ -3,11 +3,13 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <UserSecretsId>37460e82-76ef-4180-a8ef-0b3eb99a7bbf</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.7" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.7" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
         <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
         <PackageReference Include="Blazored.SessionStorage" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="5.0.12" />
@@ -41,14 +43,11 @@
       <Folder Include="Definitions\HttpClients\" />
     </ItemGroup>
     <ItemGroup>
-      <None Remove="Definitions\" />
-      <None Remove="Definitions\Constants\" />
-      <None Remove="Definitions\Models\" />
-      <None Remove="Microsoft.Extensions.Http" />
-      <None Remove="Definitions\Attributes\" />
-      <None Remove="IdentityModel" />
-      <None Remove="IdentityModel.OidcClient" />
-      <None Remove="Newtonsoft.Json" />
-      <None Remove="Definitions\HttpClients\" />
+      <None Update="docker-compose.yaml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="nginx.conf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 </Project>
