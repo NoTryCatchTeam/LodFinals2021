@@ -1,5 +1,7 @@
 @use "colors";
 
+$nav-transitions: 0.5s;
+
 .sidebar {
   position: fixed;
   height: 100vh;
@@ -23,10 +25,15 @@
 
       &.active {
         color: colors.$light-color;
-        
+
         > .nav-link {
           background-color: colors.$primary-color;
           box-shadow: 0 4px 10px rgba(26, 128, 216, 0.65);
+
+          svg path {
+            transition: $nav-transitions;
+            stroke: white;
+          }
         }
       }
 
@@ -37,6 +44,21 @@
         align-items: center;
         padding: 12px 14px;
         border-radius: 16px;
+        transition: $nav-transitions;
+
+        &:hover {
+          color: colors.$light-color;
+          background-color: colors.$primary-color;
+          box-shadow: 0 4px 10px rgba(26, 128, 216, 0.65);
+
+          svg path {
+            stroke: white;
+          }
+        }
+
+        svg path {
+          stroke: colors.$secondary-color;
+        }
       }
     }
   }

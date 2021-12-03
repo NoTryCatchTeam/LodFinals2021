@@ -2,6 +2,7 @@
 @use "fonts";
 @use "grid";
 
+@use "errors";
 @use "sidebar";
 @use "index";
 
@@ -41,7 +42,7 @@ a {
   .content {
     margin-left: 280px;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 }
 

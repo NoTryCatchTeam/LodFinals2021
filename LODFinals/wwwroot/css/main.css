@@ -689,6 +689,14 @@
   margin-top: 40px;
 }
 
+.error-404 {
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .sidebar {
   position: fixed;
   height: 100vh;
@@ -717,6 +725,10 @@
   background-color: #349FFC;
   box-shadow: 0 4px 10px rgba(26, 128, 216, 0.65);
 }
+.nav-list .nav-item .nav-href.active > .nav-link svg path {
+  transition: 0.5s;
+  stroke: white;
+}
 .nav-list .nav-item .nav-href .nav-link {
   display: flex;
   flex-direction: row;
@@ -724,6 +736,18 @@
   align-items: center;
   padding: 12px 14px;
   border-radius: 16px;
+  transition: 0.5s;
+}
+.nav-list .nav-item .nav-href .nav-link:hover {
+  color: #ffffff;
+  background-color: #349FFC;
+  box-shadow: 0 4px 10px rgba(26, 128, 216, 0.65);
+}
+.nav-list .nav-item .nav-href .nav-link:hover svg path {
+  stroke: white;
+}
+.nav-list .nav-item .nav-href .nav-link svg path {
+  stroke: #696B86;
 }
 
 .index {
@@ -869,6 +893,7 @@
   box-shadow: 0 4px 10px #1C1D23;
   border-radius: 24px;
   padding: 12px 16px;
+  margin-top: 16px;
 }
 .analytics-row .activity-box .activity-box-content .activity-numbers .activity-number-item {
   padding: 12px 0;
@@ -957,7 +982,7 @@ a {
 .page .content {
   margin-left: 280px;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .icon {
