@@ -122,9 +122,8 @@
         {
             try
             {
-                var requestMessage = new HttpRequestMessage(HttpMethod.Get, $"/photos/dude?start={0}&end={40}");
-                var responseMessage = await HttpClient.SendAsync(requestMessage);
-                if (!responseMessage.IsSuccessStatusCode)
+                var responseMessage = await HttpClient.GetAsync($"/photos/dude?start={0}&end={40}");
+                if (responseMessage.IsSuccessStatusCode)
                 {
                     var images = JsonConvert.DeserializeObject<IEnumerable<string>>(await responseMessage.Content.ReadAsStringAsync());
                     StateHasChanged();

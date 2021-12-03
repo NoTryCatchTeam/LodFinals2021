@@ -26,10 +26,7 @@ namespace LODFinals
                 .Add<App>("#app");
 
             builder.Services
-                .AddHttpClient(builder.Configuration.GetValue<string>(ConfigurationConstants.Urls.API_FLAG), opt => opt.BaseAddress = new Uri(builder.Configuration.GetValue<string>(ConfigurationConstants.Urls.PRIMARY_URL)))
-                .AddHttpMessageHandler<AuthenticationMessageHandler>();
-
-            builder.Services
+                .AddScoped(services => new HttpClient { BaseAddress = new Uri(builder.Configuration.GetValue<string>(ConfigurationConstants.Urls.PRIMARY_URL)) })
                 .AddBlazoredLocalStorage(config =>
                 {
                     config.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
