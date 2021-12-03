@@ -53,7 +53,7 @@
       <None Remove="Blazored.LocalStorage" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\..\IdentityModel.OidcClient\src\OidcClient\OidcClient.csproj">
+      <ProjectReference Include="..\IdentityModel.OidcClient\src\OidcClient\OidcClient.csproj">
         <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
       </ProjectReference>
     </ItemGroup>
