@@ -1,5 +1,8 @@
 ﻿@page "/"
 
+@inject SignOutSessionStateManager SignOutManager
+@inject NavigationManager nav
+
 <h1>Hello world !</h1>
 
 <model-viewer src="data/chelos.glb"
@@ -10,3 +13,14 @@
               camera-orbit="45deg 55deg"
               exposure="0.19">
 </model-viewer>
+
+<button class="btn btn-danger" @onclick="Logout"></button>
+
+        
+@code{
+    public async Task Logout()
+    {
+        await SignOutManager.SetSignOutState();
+        nav.NavigateTo("authentication/logout");
+    }
+}
