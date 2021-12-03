@@ -22,9 +22,9 @@
 
                     <div class="input-wrapper s-col">
 
-                        <label class="font-body__xs__regular secondary">
+                        <label class="font-body__xxxs__regular secondary">
                             Имя пользователя
-                            <InputText @bind-Value="_form.Login"/>
+                            <InputText class="font-body__xs__bold light" @bind-Value="_form.Login"/>
                         </label>
 
                     </div>
@@ -35,9 +35,9 @@
 
                     <div class="input-wrapper s-col">
 
-                        <label class="font-body__xs__regular secondary">
+                        <label class="font-body__xxxs__regular secondary">
                             Пароль
-                            <InputText type="password" @bind-Value="_form.Password"/>
+                            <InputText class="font-body__xs__bold light" type="password" @bind-Value="_form.Password"/>
                         </label>
 
                     </div>
@@ -48,17 +48,17 @@
                 <div class="input-checkbox s-row">
 
                     <InputCheckbox @bind-Value="_form.IsRememberMe" id="remember-me" name="remember-me"/>
-                    <label class="font-body__xs__regular" for="remember-me">
+                    <label class="font-body__xxs__semi-bold light" for="remember-me">
                         Запомнить меня
                     </label>
 
                 </div>
 
-                <input type="submit" value="Авторизоваться" @onclick="OnValidFormSubmit"/>
+                <input class="font-body__xs__semi-bold light" type="submit" value="Авторизоваться" @onclick="OnValidFormSubmit"/>
 
-                <p class="font-body__xs__regular secondary">или</p>
+                <p class="font-body__xxs__regular secondary">или</p>
 
-                <button @onclick="LoginAsync" class="esia">Войти через ЕСИА</button>
+                <button  @onclick="LoginAsync" class="esia font-body__xs__semi-bold light">Войти через ЕСИА</button>
 
             </EditForm>
 

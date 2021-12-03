@@ -35,10 +35,6 @@
 
         .input-wrapper {
           width: 100%;
-
-          p {
-            font-size: 14px;
-          }
         }
       }
 
@@ -78,10 +74,6 @@
         cursor: pointer;
         background: colors.$primary-color;
         box-shadow: 0 4px 10px rgba(26, 128, 216, 0.65);
-      }
-
-      p {
-        font-size: 12px;
       }
 
       button.esia {

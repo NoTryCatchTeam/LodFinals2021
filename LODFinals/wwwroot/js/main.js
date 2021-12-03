@@ -17,7 +17,6 @@ function initPhotos() {
 }
 
 function commonInit() {
-    
     topBarInit();
 }
 

@@ -1,28 +1,63 @@
 @use "colors";
 
 @font-face {
-  font-family: "ProductSansBold";
-  src: url("../fonts/Gilroy-Bold.ttf");
+  font-family: 'Gilroy';
+  src: url('../fonts/Gilroy-Regular.eot');
+  src: local('Gilroy Regular'), local('Gilroy-Regular'),
+  url('../fonts/Gilroy-Regular.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/Gilroy-Regular.woff') format('woff'),
+  url('../fonts/Gilroy-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: "ProductSansRegular";
-  src: url("../fonts/Gilroy-Regular.ttf");
+  font-family: 'Gilroy';
+  src: url('../fonts/Gilroy-Medium.eot');
+  src: local('Gilroy Medium'), local('Gilroy-Medium'),
+  url('../fonts/Gilroy-Medium.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/Gilroy-Medium.woff') format('woff'),
+  url('../fonts/Gilroy-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('../fonts/Gilroy-SemiBold.eot');
+  src: local('Gilroy SemiBold'), local('Gilroy-SemiBold'),
+  url('../fonts/Gilroy-SemiBold.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/Gilroy-SemiBold.woff') format('woff'),
+  url('../fonts/Gilroy-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('../fonts/Gilroy-Bold.eot');
+  src: local('Gilroy Bold'), local('Gilroy-Bold'),
+  url('../fonts/Gilroy-Bold.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/Gilroy-Bold.woff') format('woff'),
+  url('../fonts/Gilroy-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
 }
 
 $types: body, header;
-$weights: ("regular": 400, "medium": 500, "bold": 600);
-$sizes: ("xs": 16px, "m": 24px, "l": 36px, "xl": 40px);
+$weights: ("regular": 400, "medium": 500, "semi-bold": 600, "bold": 700);
+$sizes: ("xxxxs": 10px, "xxxs": 12px, "xxs": 14px, "xs": 16px, "s": 18px, "m": 24px, "l": 36px, "xl": 40px, "xxxl": 80px);
 
 @each $type in $types {
   @each $weight-key, $weight-val in $weights {
     @each $size-key, $size-val in $sizes {
       .font-#{$type}__#{$size-key}__#{$weight-key} {
-        font-family: ProductSansRegular, sans-serif;
+        font-family: 'Gilroy', sans-serif;
         font-weight: $weight-val;
         font-size: $size-val;
+        line-height: $size-val * 1.5;
 
-        &.primary {
+        &.primary { 
           color: colors.$primary-color;
         }
 
