@@ -56,6 +56,8 @@ namespace LODFinals.Api
 
             app.UseCors();
 
+            app.UseStaticFiles();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
