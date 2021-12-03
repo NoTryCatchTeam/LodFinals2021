@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 namespace LODFinals.Components
 {
     [Authorize]
-    public class BaseAutorizedComponent : BaseComponent
+    public class BaseAuthorizedComponent : BaseComponent
     {
         [CascadingParameter]
         protected Task<AuthenticationState> AuthenticationStateTask { get; set; }

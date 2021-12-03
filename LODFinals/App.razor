@@ -1,9 +1,11 @@
+@using LODFinals.Pages
+
 <CascadingAuthenticationState>
     <Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
         <Found Context="routeData">
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
                 <NotAuthorized>
-                    <a href="authentication/login">Login</a>
+                    <Login />
                 </NotAuthorized>
                 <Authorizing>
                     <h1>View for authorizing user</h1>

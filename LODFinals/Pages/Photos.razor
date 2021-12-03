@@ -1,0 +1,69 @@
+@page "/photos"
+@layout AuthorizedBase
+@inject NavigationManager _navigation
+
+<div class="photos s-row justify-space-between">
+
+    <div class="photos-content s-col">
+
+        <div class="photos-bar s-row align-items-center justify-space-between">
+
+            <div class="s-col">
+                <Breadcrumbs />
+
+                <p class="font-header__l__bold light">Фотографии</p>
+            </div>
+
+            <div class="photos-buttons s-row align-items-center">
+
+                <div class="photos-sorts s-row">
+
+                    <a href="@(_navigation.Uri)#sort-platforms">
+                        <p class="font-header__xs__regular light s-row">
+                            <span>все площадки</span>
+                            <img src="images/arrow-down.svg"/>
+                        </p>
+                    </a>
+
+                    <a href="@(_navigation.Uri)#sort-date">
+                        <p class="font-header__xs__regular light s-row">
+                            <span>сначала новые</span>
+                            <img src="images/arrow-down.svg"/>
+                        </p>
+                    </a>
+
+                </div>
+
+                <div class="photos-views s-row">
+
+                    <a href="@(_navigation.Uri)#view-rows">
+                        <p>
+                            <img src="images/view-rows.svg"/>
+                        </p>
+                    </a>
+
+                    <a href="@(_navigation.Uri)#view-web">
+                        <p>
+                            <img src="images/view-web.svg"/>
+                        </p>
+                    </a>
+
+                    <a href="@(_navigation.Uri)#view-grid">
+                        <p>
+                            <img src="images/view-grid.svg"/>
+                        </p>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="dates-bar">
+        <img src="images/dates-bar.svg">
+    </div>
+
+</div>

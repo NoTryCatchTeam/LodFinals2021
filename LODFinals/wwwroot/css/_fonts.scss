@@ -12,7 +12,7 @@
 
 $types: body, header;
 $weights: ("regular": 400, "medium": 500, "bold": 600);
-$sizes: ("xs": 16px, "m": 24px, "l": 32px, "xl": 40px);
+$sizes: ("xs": 16px, "m": 24px, "l": 36px, "xl": 40px);
 
 @each $type in $types {
   @each $weight-key, $weight-val in $weights {

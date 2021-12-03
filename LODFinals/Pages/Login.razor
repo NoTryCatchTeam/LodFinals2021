@@ -1,0 +1,91 @@
+@page "/login"
+@using Blazored.SessionStorage
+@using LODFinals.Definitions.Constants
+@using LODFinals.Definitions.Models
+@using Microsoft.Extensions.Logging
+@using Newtonsoft.Json
+@inject ISessionStorageService _sessionStorageService
+@inject NavigationManager _navigation
+@inject ILogger<Login> _logger;
+@attribute [AllowAnonymous]
+
+<div class="login s-row justify-center align-items-center">
+    <div class="login-form s-row align-items-center background-gradient-wrapper">
+        <div class="login-form-content s-col justify-center align-items-center background-gradient">
+
+            <img class="form-logo" src="images/logo.svg"/>
+
+            <EditForm Model="@_form" class="s-col justify-space-between">
+
+                <div class="input s-row">
+                    <img class="icon" src="images/user-square.svg"/>
+
+                    <div class="input-wrapper s-col">
+
+                        <label class="font-body__xs__regular secondary">
+                            Имя пользователя
+                            <InputText @bind-Value="_form.Login"/>
+                        </label>
+
+                    </div>
+                </div>
+
+                <div class="input s-row">
+                    <img class="icon" src="images/lock.svg"/>
+
+                    <div class="input-wrapper s-col">
+
+                        <label class="font-body__xs__regular secondary">
+                            Пароль
+                            <InputText type="password" @bind-Value="_form.Password"/>
+                        </label>
+
+                    </div>
+
+                    <img class="icon" src="images/eye.svg"/>
+                </div>
+
+                <div class="input-checkbox s-row">
+
+                    <InputCheckbox @bind-Value="_form.IsRememberMe" id="remember-me" name="remember-me"/>
+                    <label class="font-body__xs__regular" for="remember-me">
+                        Запомнить меня
+                    </label>
+
+                </div>
+
+                <input type="submit" value="Авторизоваться" @onclick="OnValidFormSubmit"/>
+
+                <p class="font-body__xs__regular secondary">или</p>
+
+                <button @onclick="OnEsiaAuth" class="esia">Войти через ЕСИА</button>
+
+            </EditForm>
+
+        </div>
+    </div>
+</div>
+
+@code {
+    private LoginForm _form = new();
+
+    private void OnValidFormSubmit(MouseEventArgs e)
+    {
+        _logger.LogInformation("Submit called");
+
+        _sessionStorageService.ClearAsync();
+        _sessionStorageService.SetItemAsStringAsync(SessionConstants.ACCESS_TOKEN, Guid.NewGuid().ToString());
+        _sessionStorageService.SetItemAsStringAsync(SessionConstants.REFRESH_TOKEN, Guid.NewGuid().ToString());
+        _sessionStorageService.SetItemAsStringAsync(SessionConstants.USER_DATA, "{\"data\": 123}");
+
+        _navigation.NavigateTo("/");
+    }
+
+    private void OnEsiaAuth(MouseEventArgs e)
+    {
+        _logger.LogInformation("esia called");
+
+    // _navigation.NavigateTo("/");
+    }
+
+}

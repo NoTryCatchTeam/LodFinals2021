@@ -1,4 +1,6 @@
 ﻿@page "/"
+@layout AuthorizedBase
+@inherits LODFinals.Components.BaseAuthorizedComponent
 @inject IJSRuntime _js
 
 <div class="index s-row animate__animated animate__fadeIn">
@@ -36,8 +38,8 @@
 
     </div>
 
-    <div class="mentions-box">
-        <div class="mentions-box-content">
+    <div class="mentions-box background-gradient-wrapper">
+        <div class="mentions-box-content background-gradient">
 
             <div class="header-with-sort">
 
@@ -97,8 +99,8 @@
 
 </div>
 
-<div class="activity-box">
-    <div class="activity-box-content">
+<div class="activity-box background-gradient-wrapper">
+    <div class="activity-box-content background-gradient">
 
         <div class="header-with-sort">
 
@@ -115,7 +117,7 @@
 
         </div>
 
-        <div class="activity-numbers s-col">
+        <div class="activity-numbers s-col"> 
 
             <div class="activity-number-item s-row align-items-center justify-space-between">
                 <p class="activity-number-item-social s-row align-items-center font-body__xs__bold light">

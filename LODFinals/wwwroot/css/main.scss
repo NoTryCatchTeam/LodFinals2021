@@ -5,7 +5,11 @@
 @use "errors";
 @use "sidebar";
 @use "topbar";
+@use "breadcrumbs";
+
+@use "login";
 @use "index";
+@use "photos";
 
 * {
   padding: 0;
@@ -31,6 +35,14 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+input {
+  width: 100%;
+  border: none;
+  background-color: colors.$dark-color;
+  color: colors.$light-color;
+  outline: none;
 }
 
 #app {

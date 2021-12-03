@@ -65,6 +65,22 @@ $columns: 12;
   justify-content: space-between;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .margin-top-40 {
   margin-top: 40px;
 }
+
+.background-gradient-wrapper {
+  background: linear-gradient(180deg, #555A6E 0%, #1D1E23 38.02%);
+  border-radius: 32px;
+  padding: 1px;
+
+  .background-gradient {
+    background: linear-gradient(180deg, #2E313C 0%, #1D1E23 38.02%);
+    border-radius: 32px;
+  }
+}
+
