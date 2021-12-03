@@ -5,7 +5,7 @@
         public static class Authentication
         {
             public const string AUTHENTICATION = "Authentication";
-            public const string REDIRECT_URI = "Authentication:RedirectUri";
+            public const string CLIENT_SECRET = "CLIENT_SECRET";
         }
 
         public static class Urls

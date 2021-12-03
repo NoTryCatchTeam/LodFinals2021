@@ -1,6 +1,7 @@
 @page "/photos"
-@layout AuthorizedBase
+@*@layout AuthorizedBase*@
 @inject NavigationManager _navigation
+@inject HttpClient HttpClient
 
 <div class="photos s-row justify-space-between">
 
@@ -108,3 +109,32 @@
     </div>
 
 </div>
+
+@code
+{
+        protected override async Task OnAfterRenderAsync(bool firstRenderer)
+        {
+#if DEBUG
+            await Task.Delay(5000);
+#endif
+
+        if (firstRenderer)
+        {
+            try
+            {
+                var requestMessage = new HttpRequestMessage(HttpMethod.Get, $"/photos/dude?start={0}&end={40}");
+                var responseMessage = await HttpClient.SendAsync(requestMessage);
+                if (!responseMessage.IsSuccessStatusCode)
+                {
+                    var images = JsonConvert.DeserializeObject<IEnumerable<string>>(await responseMessage.Content.ReadAsStringAsync());
+                    StateHasChanged();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        await base.OnAfterRenderAsync(firstRenderer);
+    }
+}

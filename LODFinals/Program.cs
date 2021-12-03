@@ -46,7 +46,6 @@ namespace LODFinals
                     {
                         Browser = new WebAuthenticatorBrowser(services.GetRequiredService<NavigationManager>(), services.GetRequiredService<ILocalStorageService>()),
                         Policy = new Policy { Discovery = new DiscoveryPolicy { RequireHttps = false } },
-                        
                     };
 
                     builder.Configuration.Bind(ConfigurationConstants.Authentication.AUTHENTICATION, opt);

@@ -144,7 +144,7 @@ namespace IdentityModel.OidcClient
         /// <value>
         ///   <c>true</c> for loading claims from userinfo; otherwise, <c>false</c>.
         /// </value>
-        public bool LoadProfile { get; set; } = false;
+        public bool LoadProfile { get; set; } = true;
 
         /// <summary>
         /// Gets or sets a value indicating whether to filter claims.
