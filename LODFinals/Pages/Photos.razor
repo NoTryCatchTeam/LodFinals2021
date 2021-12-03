@@ -6,29 +6,33 @@
 
     <div class="photos-content s-col">
 
-        <div class="photos-bar s-row align-items-center justify-space-between">
+        <div class="photos-bar s-row align-items-center justify-space-between animate__animated animate__fadeIn">
 
             <div class="s-col">
-                <Breadcrumbs />
+                <Breadcrumbs/>
 
                 <p class="font-header__l__bold light">Фотографии</p>
             </div>
 
             <div class="photos-buttons s-row align-items-center">
 
-                <div class="photos-sorts s-row">
+                <div class="photos-sorts s-row align-items-center">
 
                     <a href="@(_navigation.Uri)#sort-platforms">
-                        <p class="font-header__xs__regular light s-row">
+                        <p class="font-header__xs__regular light s-row align-items-center justify-space-between">
                             <span>все площадки</span>
-                            <img src="images/arrow-down.svg"/>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.9201 8.94995L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.94995" stroke="#696B86" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                         </p>
                     </a>
 
                     <a href="@(_navigation.Uri)#sort-date">
-                        <p class="font-header__xs__regular light s-row">
+                        <p class="font-header__xs__regular light s-row align-items-center justify-space-between">
                             <span>сначала новые</span>
-                            <img src="images/arrow-down.svg"/>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.9201 8.94995L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.94995" stroke="#696B86" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                         </p>
                     </a>
 
@@ -37,20 +41,33 @@
                 <div class="photos-views s-row">
 
                     <a href="@(_navigation.Uri)#view-rows">
-                        <p>
-                            <img src="images/view-rows.svg"/>
+                        <p class="s-row">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.9 13.5H4.1C2.6 13.5 2 14.14 2 15.73V19.77C2 21.36 2.6 22 4.1 22H19.9C21.4 22 22 21.36 22 19.77V15.73C22 14.14 21.4 13.5 19.9 13.5Z" stroke="#696B86" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M19.9 2H4.1C2.6 2 2 2.64 2 4.23V8.27C2 9.86 2.6 10.5 4.1 10.5H19.9C21.4 10.5 22 9.86 22 8.27V4.23C22 2.64 21.4 2 19.9 2Z" stroke="#696B86" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                         </p>
                     </a>
 
-                    <a href="@(_navigation.Uri)#view-web">
-                        <p>
-                            <img src="images/view-web.svg"/>
+                    <a class="active" href="@(_navigation.Uri)#view-web">
+                        <p class="s-row">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 8.52V3.98C22 2.57 21.36 2 19.77 2H15.73C14.14 2 13.5 2.57 13.5 3.98V8.51C13.5 9.93 14.14 10.49 15.73 10.49H19.77C21.36 10.5 22 9.93 22 8.52Z" stroke="#696B86" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M22 19.77V15.73C22 14.14 21.36 13.5 19.77 13.5H15.73C14.14 13.5 13.5 14.14 13.5 15.73V19.77C13.5 21.36 14.14 22 15.73 22H19.77C21.36 22 22 21.36 22 19.77Z" stroke="#696B86" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M10.5 8.52V3.98C10.5 2.57 9.86 2 8.27 2H4.23C2.64 2 2 2.57 2 3.98V8.51C2 9.93 2.64 10.49 4.23 10.49H8.27C9.86 10.5 10.5 9.93 10.5 8.52Z" stroke="#696B86" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M10.5 19.77V15.73C10.5 14.14 9.86 13.5 8.27 13.5H4.23C2.64 13.5 2 14.14 2 15.73V19.77C2 21.36 2.64 22 4.23 22H8.27C9.86 22 10.5 21.36 10.5 19.77Z" stroke="#696B86" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                         </p>
                     </a>
 
                     <a href="@(_navigation.Uri)#view-grid">
-                        <p>
-                            <img src="images/view-grid.svg"/>
+                        <p class="s-row">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 10.9V4.1C22 2.6 21.36 2 19.77 2H15.73C14.14 2 13.5 2.6 13.5 4.1V10.9C13.5 12.4 14.14 13 15.73 13H19.77C21.36 13 22 12.4 22 10.9Z" stroke="#696B86" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M22 19.9V18.1C22 16.6 21.36 16 19.77 16H15.73C14.14 16 13.5 16.6 13.5 18.1V19.9C13.5 21.4 14.14 22 15.73 22H19.77C21.36 22 22 21.4 22 19.9Z" stroke="#696B86" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M10.5 13.1V19.9C10.5 21.4 9.86 22 8.27 22H4.23C2.64 22 2 21.4 2 19.9V13.1C2 11.6 2.64 11 4.23 11H8.27C9.86 11 10.5 11.6 10.5 13.1Z" stroke="#696B86" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M10.5 4.1V5.9C10.5 7.4 9.86 8 8.27 8H4.23C2.64 8 2 7.4 2 5.9V4.1C2 2.6 2.64 2 4.23 2H8.27C9.86 2 10.5 2.6 10.5 4.1Z" stroke="#696B86" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                         </p>
                     </a>
 
@@ -60,9 +77,33 @@
 
         </div>
 
+        <div class="photos-date-bar s-row justify-space-between animate__animated animate__fadeIn">
+
+            <p class="font-body__xs__bold text s-row col-gap-8 align-items-center">
+                <span>3 декабря 2021</span>
+                <img class="icon" src="images/InstagramLogo.svg"/>
+                <span>instagram</span>
+            </p>
+
+            <p class="font-body__xs__regular light photos-current-date">
+                <span>июнь 2021</span>
+            </p>
+
+        </div>
+
+        <div class="photos-gallery s-row margin-top-24 row-gap-8 col-gap-8 animate__animated animate__fadeIn">
+
+            @for (var i = 0; i < 20; i++)
+            {
+                <div class="photo-gallery-item">
+                    <img src="images/yurydud@(i % 4 == 0 ? string.Empty : i % 4).png"/>
+                </div>
+            }
+
+        </div>
     </div>
 
-    <div class="dates-bar">
+    <div class="dates-bar animate__animated animate__fadeInRight">
         <img src="images/dates-bar.svg">
     </div>
 

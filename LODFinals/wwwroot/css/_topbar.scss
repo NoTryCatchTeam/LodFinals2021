@@ -15,18 +15,16 @@
   }
 
   .profile {
-    display: flex;
     justify-content: flex-end;
-    align-items: center;
-    width: 25%;
 
-    .notifications {
-
-      p {
-        padding: 12px;
-        border-radius: 16px;
-        background-color: colors.$dark-color;
-      }
+    a.notifications p {
+      padding: 12px;
+      border-radius: 16px;
+      background-color: colors.$dark-color;
+    }
+    
+    a.more {
+      margin-left: 16px;
     }
 
     .photo {
@@ -39,25 +37,15 @@
     }
 
     .data {
-      display: flex;
-      flex-direction: column;
       margin-left: 16px;
       row-gap: 4px;
 
       .rating {
-        display: flex;
-        align-items: center;
         column-gap: 4px;
 
         .rating-label {
 
         }
-      }
-    }
-
-    .actions {
-      p {
-        padding: 12px;
       }
     }
   }

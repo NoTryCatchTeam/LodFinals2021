@@ -1,12 +1,89 @@
 @use "colors";
 
-.photos{
+.photos {
   margin-top: 72px;
 }
 
-.photos-content{
+.photos-content {
   width: 100%;
+  padding-right: 16px;
+
+  .photos-bar {
+    .photos-buttons {
+      column-gap: 40px;
+
+      .photos-sorts {
+        column-gap: 40px;
+
+        a p {
+          background: colors.$dark-color;
+          border-radius: 24px;
+          padding: 12px 24px;
+          width: 290px;
+        }
+      }
+
+      .photos-views {
+        column-gap: 16px;
+        
+        a p {
+          background: colors.$dark-color;
+          border-radius: 12px;
+          padding: 12px;
+        }
+
+        a.active p {
+          background: colors.$primary-color;
+          box-shadow: 0 4px 10px rgba(26, 128, 216, 0.65);
+
+          svg path {
+            stroke: white;
+          }
+        }
+      }
+
+      a > p {
+        transition: 0.5s;
+
+        svg path {
+          transition: 0.5s;
+        }
+
+        &:hover {
+          background: colors.$primary-color;
+          box-shadow: 0 4px 10px rgba(26, 128, 216, 0.65);
+
+          svg path {
+            stroke: white;
+          }
+        }
+      }
+    }
+  }
+
+  .photos-date-bar {
+    margin-top: 24px;
+
+    .photos-current-date {
+      padding: 8px;
+      background: colors.$primary-color;
+      border-radius: 8px;
+    }
+  }
+  
+  .photos-gallery {
+    flex-wrap: wrap;
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+     
+    .photo-gallery-item {
+      img {
+        width: 240px;
+        height: 240px; 
+      }
+    }
+  }
 }
 
-.dates-bar{
+.dates-bar {
 }
