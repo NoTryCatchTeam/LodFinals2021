@@ -10,6 +10,7 @@ using IdentityModel.OidcClient;
 using LODFinals.Definitions.Constants;
 using LODFinals.Services;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -44,12 +45,12 @@ namespace LODFinals
                         Browser = new WebAuthenticatorBrowser(services.GetRequiredService<NavigationManager>(), services.GetRequiredService<ILocalStorageService>()),
                         Policy = new Policy { Discovery = new DiscoveryPolicy { RequireHttps = false } },
                     };
-
+                    opt.ClientSecret = "f3e94369-53ac-43d5-842e-09fe6d8a71ff";
                     builder.Configuration.Bind(ConfigurationConstants.Authentication.AUTHENTICATION, opt);
                     return new OidcClient(opt);
                 })
                 .AddScoped<OidcAuthenticationService>()
-                .AddScoped<Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider>(provider => provider.GetRequiredService<OidcAuthenticationService>())
+                .AddScoped<AuthenticationStateProvider>(provider => provider.GetRequiredService<OidcAuthenticationService>())
                 .AddScoped<AuthenticationMessageHandler>()
                 .AddBlazoredSessionStorage(config =>
                 {
