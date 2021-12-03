@@ -77,7 +77,7 @@ namespace LODFinals.Services
             await _sessionStorageService.SetItemAsStringAsync(SessionConstants.REFRESH_TOKEN, loginResult.RefreshToken);
             await _sessionStorageService.SetItemAsStringAsync(SessionConstants.USER_DATA, JsonConvert.SerializeObject(new UserData
             {
-                Name = loginResult.User.Identity.Name,
+                Name = loginResult.User.Identity.Name ?? "team11",
                 Claims = loginResult.User.Claims?.Select(claim => new ClaimData
                 {
                     Type = claim.Type,
