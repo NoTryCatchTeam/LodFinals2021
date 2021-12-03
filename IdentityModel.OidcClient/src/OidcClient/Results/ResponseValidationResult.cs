@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace IdentityModel.OidcClient
 {
-    internal class ResponseValidationResult : Result
+    public class ResponseValidationResult : Result
     {
         public ResponseValidationResult()
         {

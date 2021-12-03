@@ -1,7 +1,5 @@
 @page "/auth/{action}"
 @inherits BaseComponent
-@using Blazored.SessionStorage
-@using LODFinals.Definitions.Constants
 @using LODFinals.Definitions.Models
 @using Microsoft.Extensions.Logging
 @inject NavigationManager _navigation
@@ -84,9 +82,6 @@
         switch (Action)
         {
             case RemoteAuthenticationActions.LogInCallback:
-#if DEBUG
-                await Task.Delay(5000);
-#endif
                 await _authenticationService.FinishLoginAsync(NavigationManager.Uri);
                 break;
         }

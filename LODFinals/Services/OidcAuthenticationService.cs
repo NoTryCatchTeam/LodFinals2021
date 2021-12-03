@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Linq;
 using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
 using Blazored.LocalStorage;
 using Blazored.SessionStorage;
 using IdentityModel;
 using IdentityModel.Client;
 using IdentityModel.OidcClient;
-using IdentityModel.OidcClient.Results;
 using LODFinals.Definitions.Constants;
 using LODFinals.Definitions.Exceptions;
 using LODFinals.Definitions.Models;
@@ -26,7 +17,6 @@ namespace LODFinals.Services
 {
     public class OidcAuthenticationService : AuthenticationStateProvider
     {
-        private const string CODE = "code";
         private readonly NavigationManager _navigationManager;
         private readonly OidcClient _oidcClient;
         private readonly ISessionStorageService _sessionStorageService;
@@ -54,6 +44,7 @@ namespace LODFinals.Services
             var codeVerifier = await _localStorageService.GetItemAsStringAsync(SessionConstants.CODE_VERIFIER);
             if (codeVerifier == null)
             {
+                await LogoutAsync();
                 _navigationManager.NavigateTo("/auth/login");
                 return;
             }
@@ -69,21 +60,17 @@ namespace LODFinals.Services
 
             if (loginResult.IsError)
             {
+                await LogoutAsync();
                 throw new HumanReadableException("Ошибка аутентификации");
             }
 
             await _sessionStorageService.ClearAsync();
             await _sessionStorageService.SetItemAsStringAsync(SessionConstants.ACCESS_TOKEN, loginResult.AccessToken);
             await _sessionStorageService.SetItemAsStringAsync(SessionConstants.REFRESH_TOKEN, loginResult.RefreshToken);
-            await _sessionStorageService.SetItemAsStringAsync(SessionConstants.USER_DATA, JsonConvert.SerializeObject(new UserData
-            {
-                Name = loginResult.User.Identity.Name ?? "team11",
-                Claims = loginResult.User.Claims?.Select(claim => new ClaimData
-                {
-                    Type = claim.Type,
-                    Value = claim.Type,
-                })?.ToArray(),
-            }));
+            await _sessionStorageService.SetItemAsStringAsync(SessionConstants.IDENTITY_TOKEN, loginResult.IdentityToken);
+            await _sessionStorageService.SetItemAsStringAsync(SessionConstants.USER_NAME, loginResult.User.Identity.Name ?? "team11");
+
+            NotifyAuthenticationStateChanged();
             _navigationManager.NavigateTo("/");
         }
 
@@ -110,22 +97,23 @@ namespace LODFinals.Services
 
         private async Task<ClaimsPrincipal> GetUserAsync()
         {
-            var user = await _sessionStorageService.GetItemAsStringAsync(SessionConstants.USER_DATA);
+            var accessToken = await _sessionStorageService.GetItemAsStringAsync(SessionConstants.ACCESS_TOKEN);
+            var identityToken = await _sessionStorageService.GetItemAsStringAsync(SessionConstants.IDENTITY_TOKEN);
 
-            if (user == null)
+            if (accessToken == null
+                || identityToken == null)
             {
                 return new ClaimsPrincipal(new ClaimsIdentity());
             }
 
-            var userData = JsonConvert.DeserializeObject<UserData>(user);
+            // validate token response
+            var tokenResponseValidationResult = await _oidcClient.Processor.ValidateTokenResponseAsync(accessToken, identityToken, requireIdentityToken: false);
+            if (tokenResponseValidationResult.IsError)
+            {
+                return new ClaimsPrincipal(new ClaimsIdentity());
+            }
 
-            var userPrincipal = new ClaimsPrincipal();
-            userPrincipal
-                .AddIdentity(
-                    new ClaimsIdentity(userData.Claims?.Select(claim => new Claim(claim.Type, claim.Value))));
-
-            return userPrincipal;
-
+            return tokenResponseValidationResult?.IdentityTokenValidationResult?.User ?? Principal.Create(_oidcClient.Options.Authority);
         }
     }
 }

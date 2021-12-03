@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 
 namespace LODFinals.Components
 {
-    // [Authorize]
+    [Authorize]
     public class BaseAuthorizedComponent : BaseComponent
     {
         [CascadingParameter]

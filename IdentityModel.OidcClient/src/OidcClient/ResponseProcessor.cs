@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace IdentityModel.OidcClient
 {
-    internal class ResponseProcessor
+    public class ResponseProcessor
     {
         private readonly OidcClientOptions _options;
         private readonly ILogger<ResponseProcessor> _logger;
@@ -85,7 +85,7 @@ namespace IdentityModel.OidcClient
             }
 
             // validate token response
-            var tokenResponseValidationResult = await ValidateTokenResponseAsync(tokenResponse, state, requireIdentityToken:false, cancellationToken: cancellationToken);
+            var tokenResponseValidationResult = await ValidateTokenResponseAsync(tokenResponse.AccessToken, tokenResponse.IdentityToken, requireIdentityToken:false, cancellationToken: cancellationToken);
             if (tokenResponseValidationResult.IsError)
             {
                 return new ResponseValidationResult($"Error validating token response: {tokenResponseValidationResult.Error}");
@@ -99,12 +99,12 @@ namespace IdentityModel.OidcClient
             };
         }
 
-        internal async Task<TokenResponseValidationResult> ValidateTokenResponseAsync(TokenResponse response, AuthorizeState state, bool requireIdentityToken, CancellationToken cancellationToken = default)
+        public async Task<TokenResponseValidationResult> ValidateTokenResponseAsync(string accessToken, string identityToken, bool requireIdentityToken, CancellationToken cancellationToken = default)
         {
             _logger.LogTrace("ValidateTokenResponse");
 
             // token response must contain an access token
-            if (response.AccessToken.IsMissing())
+            if (accessToken.IsMissing())
             {
                 return new TokenResponseValidationResult("Access token is missing on token response.");
             }
@@ -112,13 +112,13 @@ namespace IdentityModel.OidcClient
             if (requireIdentityToken)
             {
                 // token response must contain an identity token (openid scope is mandatory)
-                if (response.IdentityToken.IsMissing())
+                if (identityToken.IsMissing())
                 {
                     return new TokenResponseValidationResult("Identity token is missing on token response.");
                 }
             }
 
-            if (response.IdentityToken.IsPresent())
+            if (identityToken.IsPresent())
             {
                 IIdentityTokenValidator validator;
                 if (_options.IdentityTokenValidator == null)
@@ -137,12 +137,12 @@ namespace IdentityModel.OidcClient
                     validator = _options.IdentityTokenValidator;
                 }
                 
-                var validationResult = await validator.ValidateAsync(response.IdentityToken, _options, cancellationToken);
+                var validationResult = await validator.ValidateAsync(identityToken, _options, cancellationToken);
 
                 if (validationResult.Error == "invalid_signature")
                 {
                     await _refreshKeysAsync(cancellationToken);
-                    validationResult = await _options.IdentityTokenValidator.ValidateAsync(response.IdentityToken, _options, cancellationToken);
+                    validationResult = await _options.IdentityTokenValidator.ValidateAsync(identityToken, _options, cancellationToken);
                 }
                 
                 if (validationResult.IsError)
@@ -163,7 +163,7 @@ namespace IdentityModel.OidcClient
                     }
                     else
                     {
-                        if (!_crypto.ValidateHash(response.AccessToken, atHash.Value, validationResult.SignatureAlgorithm))
+                        if (!_crypto.ValidateHash(accessToken, atHash.Value, validationResult.SignatureAlgorithm))
                         {
                             return new TokenResponseValidationResult("Invalid access token hash.");
                         }
