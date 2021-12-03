@@ -37,6 +37,10 @@ $sizes: ("xs": 16px, "m": 24px, "l": 32px, "xl": 40px);
         &.secondary {
           color: colors.$secondary-color;
         }
+
+        &.text-secondary {
+          color: colors.$text-secondary-color;
+        }
       }
     }
   }
