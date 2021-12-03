@@ -1,4 +1,7 @@
-﻿using Blazored.SessionStorage;
+﻿using System;
+using System.Threading.Tasks;
+using Blazored.SessionStorage;
+using LODFinals.Definitions.Exceptions;
 using Microsoft.AspNetCore.Components;
 
 namespace LODFinals.Components
@@ -10,5 +13,23 @@ namespace LODFinals.Components
 
         [Inject]
         protected ISessionStorageService SessionStorageService { get; set; }
+
+        protected string ErrorMessage { get; set; }
+
+        protected async Task WrappLogicAsync(Func<Task> action)
+        {
+            try
+            {
+                await action();
+            }
+            catch (HumanReadableException exception)
+            {
+                ErrorMessage = exception.DisplayMessage;
+            }
+            catch (Exception ex)
+            {
+                var t = ex;
+            }
+        }
     }
 }

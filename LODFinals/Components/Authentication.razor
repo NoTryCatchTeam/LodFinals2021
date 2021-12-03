@@ -1,9 +1,31 @@
-﻿@page "/authentication/{action}"
+﻿@page "/auth/{action}"
+@inherits BaseComponent
+@inject OidcAuthenticationService AuthenticationService
 
-<LODFinals.Components.AuthenticatorView Action="@Action" />
+<button style="width:100px; height:50px" @onclick="LoginAsync"/>
 
-@code {
-    [Parameter]
-    public string Action { get; set; }
+ @code {
+
+     [Parameter]
+     public string Action { get; set; }
+
+     public Task LoginAsync() => WrappLogicAsync(() => AuthenticationService.StartLoginAsync());
+
+     protected override async Task OnParametersSetAsync()
+     {
+
+         switch (Action)
+         {
+             case RemoteAuthenticationActions.LogInCallback:
+#if DEBUG
+                 await Task.Delay(4000);
+#endif
+                 await AuthenticationService.FinishLoginAsync(NavigationManager.Uri);
+                 break;
+         }
+
+         await base.OnParametersSetAsync();
+     }
+
 }
 
