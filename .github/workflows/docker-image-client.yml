@@ -16,7 +16,14 @@ jobs:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - name: create-json
+      id: create-json
+      uses: jsdaniell/create-json@1.1.2
+      with:
+        name: "appsettings.json"
+        json: ${{ secrets.APPSETTINGS }}
+        dir: 'wwwroot/'
     - name: Build the API Docker image
       run: docker build . --file ./LODFinals/Dockerfile --tag ${{secrets.DOCKER_USER}}/ntc-client:latest
       
