@@ -26,7 +26,7 @@ namespace IdentityModel.OidcClient
         private readonly AuthorizeClient _authorizeClient;
 
         private readonly bool _useDiscovery;
-        private readonly ResponseProcessor _processor;
+        public ResponseProcessor Processor { get; set; }
 
         /// <summary>
         /// Gets the options.
@@ -54,7 +54,7 @@ namespace IdentityModel.OidcClient
             Options = options;
             _logger = options.LoggerFactory.CreateLogger<OidcClient>();
             _authorizeClient = new AuthorizeClient(options);
-            _processor = new ResponseProcessor(options, EnsureProviderInformationAsync);
+            Processor = new ResponseProcessor(options, EnsureProviderInformationAsync);
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace IdentityModel.OidcClient
                 return new LoginResult(authorizeResponse.Error, authorizeResponse.ErrorDescription);
             }
 
-            var result = await _processor.ProcessResponseAsync(authorizeResponse, state, backChannelParameters, cancellationToken);
+            var result = await Processor.ProcessResponseAsync(authorizeResponse, state, backChannelParameters, cancellationToken);
             if (result.IsError)
             {
                 _logger.LogError(result.Error);
@@ -349,7 +349,7 @@ namespace IdentityModel.OidcClient
             }
 
             // validate token response
-            var validationResult = await _processor.ValidateTokenResponseAsync(response, null, requireIdentityToken: Options.Policy.RequireIdentityTokenOnRefreshTokenResponse,
+            var validationResult = await Processor.ValidateTokenResponseAsync(response.AccessToken, response.IdentityToken, requireIdentityToken: Options.Policy.RequireIdentityTokenOnRefreshTokenResponse,
                 cancellationToken: cancellationToken);
             if (validationResult.IsError)
             {
@@ -467,7 +467,7 @@ namespace IdentityModel.OidcClient
             }
         }
 
-        internal ClaimsPrincipal ProcessClaims(ClaimsPrincipal user, IEnumerable<Claim> userInfoClaims)
+        public ClaimsPrincipal ProcessClaims(ClaimsPrincipal user, IEnumerable<Claim> userInfoClaims)
         {
             _logger.LogTrace("ProcessClaims");
 

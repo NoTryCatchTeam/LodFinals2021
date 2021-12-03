@@ -4,7 +4,7 @@
 
 namespace IdentityModel.OidcClient.Results
 {
-    internal class TokenResponseValidationResult : Result
+    public class TokenResponseValidationResult : Result
     {
         public TokenResponseValidationResult(string error)
         {
