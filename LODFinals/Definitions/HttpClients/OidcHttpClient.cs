@@ -1,8 +1,10 @@
-﻿using System.Net.Http;
-
+﻿using System;
 namespace LODFinals.Definitions.HttpClients
 {
-    public class OidcHttpClient : HttpClient
+    public class OidcClient
     {
+        public OidcClient()
+        {
+        }
     }
 }
