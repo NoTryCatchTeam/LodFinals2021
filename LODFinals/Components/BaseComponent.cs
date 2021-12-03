@@ -26,9 +26,9 @@ namespace LODFinals.Components
             {
                 ErrorMessage = exception.DisplayMessage;
             }
-            catch (Exception ex)
+            catch
             {
-                var t = ex;
+                //
             }
         }
     }

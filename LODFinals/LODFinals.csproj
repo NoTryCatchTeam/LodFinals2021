@@ -13,8 +13,8 @@
         <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="5.0.12" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="5.0.12" />
         <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
-        <PackageReference Include="IdentityModel.OidcClient" Version="4.0.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="Blazored.LocalStorage" Version="4.1.5" />
     </ItemGroup>
 
     <ItemGroup>
@@ -50,5 +50,11 @@
       <None Remove="IdentityModel.OidcClient" />
       <None Remove="Newtonsoft.Json" />
       <None Remove="Definitions\Exceptions\" />
+      <None Remove="Blazored.LocalStorage" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\IdentityModel.OidcClient\src\OidcClient\OidcClient.csproj">
+        <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+      </ProjectReference>
     </ItemGroup>
 </Project>

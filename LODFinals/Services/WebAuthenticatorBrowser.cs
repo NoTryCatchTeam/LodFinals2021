@@ -1,6 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Blazored.LocalStorage;
+using Blazored.SessionStorage;
 using IdentityModel.OidcClient.Browser;
+using LODFinals.Definitions.Constants;
 using Microsoft.AspNetCore.Components;
 
 namespace LODFinals.Services
@@ -8,16 +11,19 @@ namespace LODFinals.Services
     public class WebAuthenticatorBrowser : IBrowser
     {
         private readonly NavigationManager _navigationManager;
+        private readonly ILocalStorageService _localStorageService;
 
-        public WebAuthenticatorBrowser(NavigationManager navigationManager)
+        public WebAuthenticatorBrowser(NavigationManager navigationManager, ILocalStorageService localStorageService)
         {
             _navigationManager = navigationManager;
+            _localStorageService = localStorageService;
         }
 
-        public Task<BrowserResult> InvokeAsync(BrowserOptions options, CancellationToken cancellationToken = default)
+        public async Task<BrowserResult> InvokeAsync(BrowserOptions options, CancellationToken cancellationToken = default)
         {
+            await _localStorageService.SetItemAsStringAsync(SessionConstants.CODE_VERIFIER, options.CodeVerifier);
             _navigationManager.NavigateTo(options.StartUrl);
-            return Task.FromResult(new BrowserResult());
+            return new BrowserResult();
         }
     }
 }

@@ -1,6 +1,9 @@
 using System;
+using System.Net.Http;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Blazored.LocalStorage;
 using Blazored.SessionStorage;
 using IdentityModel.Client;
 using IdentityModel.OidcClient;
@@ -27,12 +30,23 @@ namespace LODFinals
                 .AddHttpMessageHandler<AuthenticationMessageHandler>();
 
             builder.Services
+                .AddBlazoredLocalStorage(config =>
+                {
+                    config.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+                    config.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+                    config.JsonSerializerOptions.IgnoreReadOnlyProperties = true;
+                    config.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                    config.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                    config.JsonSerializerOptions.ReadCommentHandling = JsonCommentHandling.Skip;
+                    config.JsonSerializerOptions.WriteIndented = false;
+                })
                 .AddScoped(services =>
                 {
                     var opt = new OidcClientOptions
                     {
-                        Browser = new WebAuthenticatorBrowser(services.GetRequiredService<NavigationManager>()),
+                        Browser = new WebAuthenticatorBrowser(services.GetRequiredService<NavigationManager>(), services.GetRequiredService<ILocalStorageService>()),
                         Policy = new Policy { Discovery = new DiscoveryPolicy { RequireHttps = false } },
+                        
                     };
 
                     builder.Configuration.Bind(ConfigurationConstants.Authentication.AUTHENTICATION, opt);
