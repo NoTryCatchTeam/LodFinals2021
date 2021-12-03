@@ -1,0 +1,72 @@
+@use "colors";
+
+.search-row {
+  column-gap: 40px;
+
+  .search-bar {
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 75%;
+    background-color: colors.$dark-color;
+    border-radius: 24px;
+    padding: 12px 24px;
+    color: colors.$secondary-color;
+    column-gap: 12px;
+
+    input {
+      width: 100%;
+      border: none;
+      background-color: colors.$dark-color;
+      color: colors.$light-color;
+      outline: none;
+    }
+  }
+
+  .profile {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 25%;
+
+    .notifications {
+
+      p {
+        padding: 12px;
+        border-radius: 16px;
+        background-color: colors.$dark-color;
+      }
+    }
+
+    .photo {
+      margin-left: 40px;
+
+      img {
+        width: 64px;
+        height: 64px;
+      }
+    }
+
+    .data {
+      display: flex;
+      flex-direction: column;
+      margin-left: 16px;
+      row-gap: 4px;
+
+      .rating {
+        display: flex;
+        align-items: center;
+        column-gap: 4px;
+
+        .rating-label {
+
+        }
+      }
+    }
+
+    .actions {
+      p {
+        padding: 12px;
+      }
+    }
+  }
+}

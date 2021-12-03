@@ -1,41 +1,40 @@
-@using System.IO
-@using System.Diagnostics
-
 @inject IJSRuntime _js
 
-<div class="navbar-brand">
-    <a href="">
-        <img src="images/logo.svg"/>
-    </a>
-</div>
+<div class="sidebar animate__animated animate__fadeInLeft">
+    <div class="navbar-brand">
+        <a href="">
+            <img src="images/logo.svg"/>
+        </a>
+    </div>
 
-<div class="navbar-menu">
-    <ul class="nav-list">
-        <li class="nav-item">
-            <NavLink class="nav-href" href="" Match="NavLinkMatch.All">
-                <div class="nav-link">
-                    @(new MarkupString(StatusUpSvg))
-                    <p class="font-body__xs__regular">Главная</p>
-                </div>
-            </NavLink>
-        </li>
-        @foreach ((string link, string icon, string text) in new List<(string, string, string)>
-        {
-            ("/photos", GalleryFavourite, "Фотографии"),
-            ("/posts", LikeTag, "Публикации"),
-            ("/comments", DocumentText, "Комментарии"),
-        })
-        {
+    <div class="navbar-menu">
+        <ul class="nav-list">
             <li class="nav-item">
-                <NavLink class="nav-href" href="@(link)">
+                <NavLink class="nav-href" href="" Match="NavLinkMatch.All">
                     <div class="nav-link">
-                        @(new MarkupString(icon))
-                        <p class="font-body__xs__regular">@text</p>
+                        @(new MarkupString(StatusUpSvg))
+                        <p class="font-body__xs__regular">Главная</p>
                     </div>
                 </NavLink>
             </li>
-        }
-    </ul>
+            @foreach ((string link, string icon, string text) in new List<(string, string, string)>
+            {
+                ("/photos", GalleryFavourite, "Фотографии"),
+                ("/posts", LikeTag, "Публикации"),
+                ("/comments", DocumentText, "Комментарии"),
+            })
+            {
+                <li class="nav-item">
+                    <NavLink class="nav-href" href="@(link)">
+                        <div class="nav-link">
+                            @(new MarkupString(icon))
+                            <p class="font-body__xs__regular">@text</p>
+                        </div>
+                    </NavLink>
+                </li>
+            }
+        </ul>
+    </div>
 </div>
 
 @code

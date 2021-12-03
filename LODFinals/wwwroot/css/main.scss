@@ -4,6 +4,7 @@
 
 @use "errors";
 @use "sidebar";
+@use "topbar";
 @use "index";
 
 * {
@@ -43,6 +44,7 @@ a {
     margin-left: 280px;
     height: 100%;
     overflow-y: auto;
+    padding: 40px;
   }
 }
 
