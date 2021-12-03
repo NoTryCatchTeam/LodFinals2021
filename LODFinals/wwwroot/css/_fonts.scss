@@ -1,5 +1,15 @@
 @use "colors";
 
+@font-face {
+  font-family: "ProductSansBold";
+  src: url("../fonts/Product Sans Bold.ttf");
+}
+
+@font-face {
+  font-family: "ProductSansRegular";
+  src: url("../fonts/Product Sans Regular.ttf");
+}
+
 $types: body, header;
 $weights: ("regular": 400, "medium": 500, "bold": 600);
 $sizes: ("xs": 16px, "m": 24px, "l": 32px, "xl": 40px);
@@ -8,15 +18,24 @@ $sizes: ("xs": 16px, "m": 24px, "l": 32px, "xl": 40px);
   @each $weight-key, $weight-val in $weights {
     @each $size-key, $size-val in $sizes {
       .font-#{$type}__#{$size-key}__#{$weight-key} {
+        font-family: ProductSansRegular, sans-serif;
         font-weight: $weight-val;
         font-size: $size-val;
 
         &.primary {
+          color: colors.$primary-color;
+        }
+
+        &.text {
           color: colors.$text-color;
         }
 
+        &.light {
+          color: colors.$light-color;
+        }
+
         &.secondary {
-          color: colors.$text-secondary-color;
+          color: colors.$secondary-color;
         }
       }
     }

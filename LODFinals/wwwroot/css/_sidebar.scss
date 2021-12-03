@@ -1,0 +1,45 @@
+@use "colors";
+
+.sidebar {
+  position: fixed;
+  height: 100vh;
+  width: 280px;
+  padding: 40px;
+  border-right: 1px solid #2B2B30;
+}
+
+.navbar-brand {
+  width: 100%;
+}
+
+.nav-list {
+  margin-top: 32px;
+
+  .nav-item {
+    margin-top: 16px;
+
+    .nav-href {
+      color: colors.$secondary-color;
+
+      &.active {
+        color: colors.$light-color;
+        
+        > .nav-link {
+          background-color: colors.$primary-color;
+          box-shadow: 0 4px 10px rgba(26, 128, 216, 0.65);
+        }
+      }
+
+      .nav-link {
+        display: flex;
+        flex-direction: row;
+        column-gap: 8px;
+        align-items: center;
+        padding: 12px 14px;
+        border-radius: 16px;
+      }
+    }
+  }
+}
+
+

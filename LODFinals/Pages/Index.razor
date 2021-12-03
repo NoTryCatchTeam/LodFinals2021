@@ -1,12 +1,110 @@
 ﻿@page "/"
+@inject IJSRuntime _js
 
-<h1>Hello world !</h1>
+<div class="index">
 
-<model-viewer src="data/chelos.glb"
-              camera-controls
-              seamless-poster
-              ar
-              ar-modes="webxr scene-viewer quick-look"
-              camera-orbit="45deg 55deg"
-              exposure="0.19">
-</model-viewer>
+    <div class="row align-items-center">
+
+        <div class="col-9">
+            <div class="search-bar row">
+                <img class="icon" src="images/search-normal.svg"/>
+                <input class="font-body__xs__regular" type="text" placeholder="Начните вводить для поиска"/>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="profile">
+
+                <div class="notifications">
+                    <a href="#notifications">
+                        <p>
+                            <img class="icon" src="images/notification.svg"/>
+                        </p>
+                    </a>
+
+                </div>
+
+                <div class="photo">
+                    <img src="images/telegram-peer-photo.png"/>
+                </div>
+
+                <div class="data">
+                    <p class="font-body__xs__regular light">Юрий Дудь</p>
+                    <p class="font-body__xs__regular rating">
+                        <span class="font-body__xs__regular secondary rating-label">рейтинг:</span>
+                        <img class="icon" src="images/heart.svg"/>
+                        <span class="font-body__xs__regular light rating-value">4,6</span>
+                    </p>
+                </div>
+
+                <div class="actions">
+                    <a href="#actions">
+                        <p>
+                            <img class="icon" src="images/arrow-down.svg"/>
+                        </p>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="analytics-row row">
+
+        <div class="analytics-col">
+
+            <div class="analytics-box justify-space-between">
+
+                <div class="analytics-item justify-space-between">
+                    <img src="images/picture-front-color.png"/>
+
+                    <p class="analytics-text">
+                        <span>241</span><br/>
+                        <span class="font-body__m__regular text">новая фотография</span>
+                    </p>
+                </div>
+
+                <div class="analytics-item justify-space-between">
+                    <img src="images/at-front-color.png"/>
+
+                    <p class="analytics-text">
+                        <span>12</span><br/>
+                        <span class="font-body__m__regular text">упоминаний в СМИ</span>
+                    </p>
+                </div>
+
+                <div class="analytics-item justify-space-between">
+                    <img src="images/chat-front-color.png"/>
+
+                    <p class="analytics-text">
+                        <span>41</span><br/>
+                        <span class="font-body__m__regular text">комментарий</span>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="mentions-box">
+
+            </div>
+
+        </div>
+
+        <div class="activity-box">
+
+        </div>
+
+    </div>
+</div>
+
+@code
+{
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await _js.InvokeVoidAsync("initIndex");
+        }
+    }
+}
