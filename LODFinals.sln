@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LODFinals.DataModels", "LOD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LODFinals.Api", "LODFinals.Api\LODFinals.Api.csproj", "{F4654318-4EBA-4D24-BC79-5364F34D2020}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OidcClient", "..\IdentityModel.OidcClient\src\OidcClient\OidcClient.csproj", "{4C720C3E-76E3-4D33-9873-D04323C3B360}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{F4654318-4EBA-4D24-BC79-5364F34D2020}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4654318-4EBA-4D24-BC79-5364F34D2020}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4654318-4EBA-4D24-BC79-5364F34D2020}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C720C3E-76E3-4D33-9873-D04323C3B360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C720C3E-76E3-4D33-9873-D04323C3B360}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C720C3E-76E3-4D33-9873-D04323C3B360}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C720C3E-76E3-4D33-9873-D04323C3B360}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
