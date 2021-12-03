@@ -1,7 +1,9 @@
 @page "/photos"
-@*@layout AuthorizedBase*@
+@using Microsoft.Extensions.Logging
+@layout AuthorizedBase
 @inject NavigationManager _navigation
-@inject HttpClient HttpClient
+@inject HttpClient _httpClient
+@inject ILogger<Photos> _logger
 
 <div class="photos s-row justify-space-between">
 
@@ -94,12 +96,12 @@
 
         <div class="photos-gallery s-row margin-top-24 row-gap-8 col-gap-8 animate__animated animate__fadeIn">
 
-            @if (images?.Any() == true)
+            @if (_images?.Any() == true)
             {
-                foreach (var image in images)
+                foreach (var image in _images)
                 {
                     <div class="photo-gallery-item">
-                        <img src="@image" />
+                        <img src="@image"/>
                     </div>
                 }
             }
@@ -115,30 +117,29 @@
 
 @code
 {
-    IReadOnlyCollection<string> images = null;
+    private IReadOnlyCollection<string> _images;
 
     protected override async Task OnAfterRenderAsync(bool firstRenderer)
     {
-#if DEBUG
-        await Task.Delay(5000);
-#endif
-
         if (firstRenderer)
         {
             try
             {
-                var responseMessage = await HttpClient.GetAsync($"/photos/dude?start={0}&end={40}");
+                var requestMessage = new HttpRequestMessage(HttpMethod.Get, "/photos/dude?start=0&end=40");
+                var responseMessage = await _httpClient.SendAsync(requestMessage);
+
                 if (responseMessage.IsSuccessStatusCode)
                 {
-                    images = JsonConvert.DeserializeObject<IReadOnlyCollection<string>>(await responseMessage.Content.ReadAsStringAsync());
+                    _images = JsonConvert.DeserializeObject<IReadOnlyCollection<string>>(await responseMessage.Content.ReadAsStringAsync());
                     StateHasChanged();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                _logger.LogError(ex, "Couldn't load photos");
             }
         }
+
         await base.OnAfterRenderAsync(firstRenderer);
     }
 }

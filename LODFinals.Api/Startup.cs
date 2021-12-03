@@ -20,7 +20,6 @@ namespace LODFinals.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -32,7 +31,10 @@ namespace LODFinals.Api
                 options.AddDefaultPolicy(
                     builder =>
                     {
-                        builder.WithOrigins(Configuration.GetValue<string>(Urls.CLIENT_URL));
+                        builder.WithOrigins(Configuration.GetValue<string>(Urls.CLIENT_URL))
+                            .AllowAnyHeader()
+                            .AllowAnyOrigin()
+                            .AllowAnyMethod();
                     });
             });
         }
@@ -43,7 +45,6 @@ namespace LODFinals.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-              
             }
 
             app.UseSwagger();
