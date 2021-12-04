@@ -3091,6 +3091,7 @@
 }
 .lib-right .lib-right-content .last-buy-item img {
   width: 64px;
+  border-radius: 16px;
 }
 .lib-right .lib-right-content .last-buy-item .last-buy-info {
   width: 100%;
@@ -3099,6 +3100,13 @@
   background: #696B86;
   border-radius: 4px;
   padding: 2px 4px;
+}
+
+#modal-2 .modal__container {
+  height: 100%;
+}
+#modal-2 .modal__container .modal__content {
+  height: 100%;
 }
 
 * {

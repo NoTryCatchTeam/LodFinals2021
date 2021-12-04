@@ -74,35 +74,59 @@
                 Последние покупки
             </p>
 
-            <div class="last-buy-item s-row margin-top-24 col-gap-24">
+            <a href="@(_navigation.Uri)#vr" id="vr" data-micromodal-trigger="modal-2">
+                <div class="last-buy-item s-row margin-top-24 col-gap-24">
 
-                <img src="images/meebits.png"/>
+                    <img src="images/helmet.png"/>
 
-                <div class="last-buy-info s-col justify-space-between">
+                    <div class="last-buy-info s-col justify-space-between">
 
-                    <div class="s-row justify-space-between align-items-center">
-                        <p class="font-body__xs__bold light">
-                            Meebit #14280
-                        </p>
-                        <p class="last-buy-tag font-body__xxxxs__bold light">
-                            NFT
-                        </p>
+                        <div class="s-row justify-space-between align-items-center">
+                            <p class="font-body__xs__bold light">
+                                Helmet #14280
+                            </p>
+                            <p class="last-buy-tag font-body__xxxxs__bold light">
+                                NFT
+                            </p>
+                        </div>
+
+                        <div class="s-row justify-space-between">
+                            <p class="font-body__xxs__regular text">
+                                Tokens
+                            </p>
+                        </div>
+
+                        <img src="images/LarvaLabs.svg"/>
+
                     </div>
-
-                    <div class="s-row justify-space-between">
-                        <p class="font-body__xxs__regular text">
-                            Meebits
-                        </p>
-                    </div>
-
-                    <img src="images/LarvaLabs.svg"/>
 
                 </div>
-
-            </div>
+            </a>
 
         </div>
     </div>
+
+</div>
+
+<div class="modal micromodal-slide" id="modal-2" aria-hidden="true">
+
+    <div class="modal__overlay" tabindex="-1">
+        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-2-title">
+            <main class="modal__content s-row" id="modal-2-content">
+                <a-scene>
+                    <a-assets>
+                        <a-asset-item id="tree" src="data/DamagedHelmet.glb"></a-asset-item>
+                    </a-assets>
+
+                    <a-entity gltf-model="#tree" position="0 1.5 -2" background="color: white" laser-controls></a-entity>
+                </a-scene>
+            </main>
+        </div>
+    </div>
+
+    <button class="modal__close" data-micromodal-close aria-label="Close modal">
+        <img class="icon-56" src="images/add.svg">
+    </button>
 
 </div>
 

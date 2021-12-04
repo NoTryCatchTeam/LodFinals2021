@@ -15,7 +15,7 @@
     background-size: contain;
     border-radius: 40px;
 
-    .top-banner-text { 
+    .top-banner-text {
       width: 55%;
       padding: 86px 40px;
     }
@@ -42,8 +42,8 @@
       }
     }
   }
-  
-  .metas-gallery { 
+
+  .metas-gallery {
     p {
       img {
         width: 100%;
@@ -55,18 +55,19 @@
 
 .lib-right {
   width: 20%;
-  
+
   .lib-right-content {
     padding: 32px;
-    
+
     .last-buy-item {
-      img {
+      img { 
         width: 64px;
+        border-radius: 16px;
       }
-      
+
       .last-buy-info {
         width: 100%;
-        
+
         .last-buy-tag {
           background: colors.$secondary-color;
           border-radius: 4px;
@@ -77,7 +78,13 @@
   }
 }
 
-
+#modal-2 .modal__container {
+  height: 100%;
+  
+  .modal__content {
+    height: 100%;
+  }
+}
 
 
 
