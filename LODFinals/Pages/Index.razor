@@ -1,7 +1,9 @@
 ﻿@page "/"
 @layout AuthorizedBase
+@using LODFinals.DataModels.Responses.MediaMentions
 @inherits LODFinals.Components.BaseAuthorizedComponent
 @inject IJSRuntime _js
+@inject HttpClient _httpClient
 
 <div class="index s-row animate__animated animate__fadeIn">
 
@@ -38,69 +40,54 @@
 
     </div>
 
-    <div class="mentions-box background-gradient-wrapper">
-        <div class="mentions-box-content background-gradient">
+    @if (_userMediaMentions?.Any() == true)
+    {
 
-            <div class="header-with-sort">
+        <div class="mentions-box background-gradient-wrapper">
+            <div class="mentions-box-content background-gradient">
 
-                <p class="font-body__xs__bold text">Упоминания в СМИ</p>
+                <div class="header-with-sort">
 
-                <a href="#filters">
-                    <p class="font-body__xs__regular primary header-with-sort-filter">
-                        <span>самые популярные</span>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19.9201 8.94995L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.94995" stroke="#349FFC" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </p>
-                </a>
+                    <p class="font-body__xs__bold text">Упоминания в СМИ</p>
 
-            </div>
+                    <a href="#filters">
+                        <p class="font-body__xs__regular primary header-with-sort-filter">
+                            <span>самые популярные</span>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.9201 8.94995L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.94995" stroke="#349FFC" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </p>
+                    </a>
 
-            <div class="mention-item">
+                </div>
 
-                <a href="#" data-micromodal-trigger="modal-1">
-                    <p class="font-body__s__bold light">"Сколько вы зарабатываете?" О Юрии Дуде и поколении YouTube</p>
-                </a>
+                @foreach (var userMediaMention in _userMediaMentions)
+                {
 
-                <p class="mention-details">
-                    <span class="font-body__xxs__bold primary">12 октября 2019</span>
-                    <span class="details-tag font-body__xxxs__bold light">LIVEJOURNAL</span>
-                </p>
+            	    <div class="mention-item">
 
-            </div>
+	                    <a href="#" data-micromodal-trigger="modal-1">
+	                        <p class="font-body__s__bold light">@userMediaMention.Title</p>
+	                    </a>
 
-            <div class="items-divider"></div>
+	                    <p class="mention-details">
+	                        <span class="font-body__xxs__bold primary">@userMediaMention.PublishDate.ToString("dd MMMM yyyy")</span>
+	                        <span class="details-tag font-body__xxxs__bold light">@userMediaMention.Media</span>
+	                    </p>
 
-            <div class="mention-item">
+           	 	    </div>
 
-                <a href="#" data-micromodal-trigger="modal-1">
-                    <p class="font-body__s__bold light">"Сколько вы зарабатываете?" О Юрии Дуде и поколении YouTube</p>
-                </a>
+	                @if (_userMediaMentions.IndexOf(userMediaMention) != _userMediaMentions.Count - 1)
+	                {
+	                    <div class="items-divider"></div>
+	                }
 
-                <p class="mention-details">
-                    <span class="font-body__xxs__bold primary">12 октября 2019</span>
-                    <span class="details-tag font-body__xxxs__bold light">LIVEJOURNAL</span>
-                </p>
-
-            </div>
-
-            <div class="items-divider"></div>
-
-            <div class="mention-item">
-
-                <a href="#" data-micromodal-trigger="modal-1">
-                    <p class="font-body__s__bold light">"Сколько вы зарабатываете?" О Юрии Дуде и поколении YouTube</p>
-                </a>
-
-                <p class="mention-details">
-                    <span class="font-body__xxs__bold primary">12 октября 2019</span>
-                    <span class="details-tag font-body__xxxs__bold light">LIVEJOURNAL</span>
-                </p>
+                }
 
             </div>
-
         </div>
-    </div>
+    
+}
 
 </div>
 
@@ -264,11 +251,27 @@
 
 @code
 {
+    private IList<MediaMentionItemResponse> _userMediaMentions;
+
+
     protected async override Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
             await _js.InvokeVoidAsync("initIndex");
+
+            await WrappLogicAsync(GtsUserMediaMentionsAsync);
+
+            async Task GtsUserMediaMentionsAsync()
+            {
+                var responseMessage = await _httpClient.GetAsync("/mediamentions/users/dude?start=0&limit=40");
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    _userMediaMentions = JsonConvert.DeserializeObject<IList<MediaMentionItemResponse>>(await responseMessage.Content.ReadAsStringAsync());
+                    StateHasChanged();
+                }
+            }
         }
     }
 }

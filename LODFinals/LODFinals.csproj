@@ -42,5 +42,8 @@
       <ProjectReference Include="..\IdentityModel.OidcClient\src\OidcClient\OidcClient.csproj">
         <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
       </ProjectReference>
+      <ProjectReference Include="..\LODFinals.DataModels\LODFinals.DataModels.csproj">
+        <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+      </ProjectReference>
     </ItemGroup>
 </Project>
