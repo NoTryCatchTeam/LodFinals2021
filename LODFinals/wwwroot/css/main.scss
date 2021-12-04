@@ -49,6 +49,16 @@ input {
 
 #app {
   height: 100%;
+  
+  p.loader {
+    height: 100%;
+    vertical-align: middle;
+    justify-items: center;
+    
+    img.loader-logo {
+      width: 400px;
+    }
+  }
 }
 
 .page {

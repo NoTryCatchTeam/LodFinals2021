@@ -2616,6 +2616,14 @@ input {
 #app {
   height: 100%;
 }
+#app p.loader {
+  height: 100%;
+  vertical-align: middle;
+  justify-items: center;
+}
+#app p.loader img.loader-logo {
+  width: 400px;
+}
 
 .page {
   height: 100%;

@@ -6,8 +6,6 @@ function initIndex() {
     commonInit();
 
     VanillaTilt.init(document.querySelectorAll(".analytics-item"));
-
-    // MicroModal.show('modal-1');
 }
 
 function initLogin() {
@@ -23,6 +21,15 @@ function commonInit() {
         awaitOpenAnimation: true,
         awaitCloseAnimation: true,
     });
+
+    // VanillaTilt.init(document.querySelector(".modal__container"), {
+    //     max: 15,
+    //     gyroscope:              true,
+    //     gyroscopeMinAngleX:     -15, 
+    //     gyroscopeMaxAngleX:     15,  
+    //     gyroscopeMinAngleY:     -15, 
+    //     gyroscopeMaxAngleY:     15,
+    // });
     
     topBarInit();
 }
