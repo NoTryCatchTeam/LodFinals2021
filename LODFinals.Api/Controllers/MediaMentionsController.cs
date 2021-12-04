@@ -27,7 +27,27 @@ namespace LODFinals.Api.Controllers
         {
             try
             {
-                return Ok(new List<MediaMentionItemResponse>());
+                return Ok(new MediaMentionItemResponse[]
+                {
+                    new MediaMentionItemResponse
+                    {
+                        Title = "\"Сколько вы зарабатываете?\" О Юрии Дуде и поколении YouTube",
+                        PublishDate = new DateTime(2019, 10, 12),
+                        Media = "LIVEJOURNAL"
+                    },
+                    new MediaMentionItemResponse
+                    {
+                        Title = "\"Сколько вы зарабатываете?\" О Юрии Дуде и поколении YouTube",
+                        PublishDate = new DateTime(2019, 10, 12),
+                        Media = "LIVEJOURNAL"
+                    },
+                    new MediaMentionItemResponse
+                    {
+                        Title = "\"Сколько вы зарабатываете?\" О Юрии Дуде и поколении YouTube",
+                        PublishDate = new DateTime(2019, 10, 12),
+                        Media = "LIVEJOURNAL"
+                    },
+                });
             }
             catch (Exception exception)
             {

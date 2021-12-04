@@ -43,49 +43,49 @@
     @if (_userMediaMentions?.Any() == true)
     {
 
-    <div class="mentions-box background-gradient-wrapper">
-        <div class="mentions-box-content background-gradient">
+        <div class="mentions-box background-gradient-wrapper">
+            <div class="mentions-box-content background-gradient">
 
-            <div class="header-with-sort">
+                <div class="header-with-sort">
 
-                <p class="font-body__xs__bold text">Упоминания в СМИ</p>
+                    <p class="font-body__xs__bold text">Упоминания в СМИ</p>
 
-                <a href="#filters">
-                    <p class="font-body__xs__regular primary header-with-sort-filter">
-                        <span>самые популярные</span>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19.9201 8.94995L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.94995" stroke="#349FFC" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </p>
-                </a>
+                    <a href="#filters">
+                        <p class="font-body__xs__regular primary header-with-sort-filter">
+                            <span>самые популярные</span>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.9201 8.94995L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.94995" stroke="#349FFC" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </p>
+                    </a>
+
+                </div>
+
+                @foreach (var userMediaMention in _userMediaMentions)
+                {
+
+            	    <div class="mention-item">
+
+	                    <a href="#" data-micromodal-trigger="modal-1">
+	                        <p class="font-body__s__bold light">@userMediaMention.Title</p>
+	                    </a>
+
+	                    <p class="mention-details">
+	                        <span class="font-body__xxs__bold primary">@userMediaMention.PublishDate.ToString("dd MMMM yyyy")</span>
+	                        <span class="details-tag font-body__xxxs__bold light">@userMediaMention.Media</span>
+	                    </p>
+
+           	 	    </div>
+
+	                @if (_userMediaMentions.IndexOf(userMediaMention) != _userMediaMentions.Count - 1)
+	                {
+	                    <div class="items-divider"></div>
+	                }
+
+                }
 
             </div>
-
-            @foreach (var userMediaMention in _userMediaMentions)
-            {
-
-            	<div class="mention-item">
-
-	                <a href="#" data-micromodal-trigger="modal-1">
-	                    <p class="font-body__s__bold light">@userMediaMention.Title</p>
-	                </a>
-
-	                <p class="mention-details">
-	                    <span class="font-body__xxs__bold primary">@userMediaMention.PublishDate.ToString("dd MMMM yyyy")</span>
-	                    <span class="details-tag font-body__xxxs__bold light">@userMediaMention.Media</span>
-	                </p>
-
-           	 	</div>
-
-	            @if (_userMediaMentions.IndexOf(userMediaMention) != _userMediaMentions.Count - 1)
-	            {
-	                <div class="items-divider"></div>
-	            }
-
-            }
-
         </div>
-    </div>
     
 }
 
