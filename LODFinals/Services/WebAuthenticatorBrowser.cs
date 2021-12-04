@@ -21,7 +21,10 @@ namespace LODFinals.Services
 
         public async Task<BrowserResult> InvokeAsync(BrowserOptions options, CancellationToken cancellationToken = default)
         {
-            await _localStorageService.SetItemAsStringAsync(SessionConstants.CODE_VERIFIER, options.CodeVerifier);
+            if (options.CodeVerifier != null)
+            {
+                await _localStorageService.SetItemAsStringAsync(SessionConstants.CODE_VERIFIER, options.CodeVerifier);
+            }
             _navigationManager.NavigateTo(options.StartUrl);
             return new BrowserResult();
         }
