@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Definitions\" />
     <Folder Include="Definitions\Constants\" />
   </ItemGroup>
 </Project>

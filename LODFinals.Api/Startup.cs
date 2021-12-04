@@ -25,7 +25,7 @@ namespace LODFinals.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LODFinals.Api", Version = "v1" });
             });
-
+            services.AddHttpClient();
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
