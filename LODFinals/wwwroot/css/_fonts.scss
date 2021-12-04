@@ -46,7 +46,7 @@
 
 $types: body, header;
 $weights: ("regular": 400, "medium": 500, "semi-bold": 600, "bold": 700);
-$sizes: ("xxxxs": 10px, "xxxs": 12px, "xxs": 14px, "xs": 16px, "s": 18px, "m": 24px, "l": 36px, "xl": 40px, "xxxl": 80px);
+$sizes: ("xxxxs": 10px, "xxxs": 12px, "xxs": 14px, "xs": 16px, "s": 18px, "m": 24px, "l": 36px, "xl": 40px, "xxl": 48px, "xxxl": 80px);
 
 @each $type in $types {
   @each $weight-key, $weight-val in $weights {

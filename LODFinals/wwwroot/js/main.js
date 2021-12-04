@@ -16,21 +16,18 @@ function initPhotos() {
     commonInit();
 }
 
+function initLibrary() {
+    commonInit();
+
+    VanillaTilt.init(document.querySelectorAll(".meta-gallery-item > img"));
+}
+
 function commonInit() {
     MicroModal.init({
         awaitOpenAnimation: true,
         awaitCloseAnimation: true,
     });
 
-    // VanillaTilt.init(document.querySelector(".modal__container"), {
-    //     max: 15,
-    //     gyroscope:              true,
-    //     gyroscopeMinAngleX:     -15, 
-    //     gyroscopeMaxAngleX:     15,  
-    //     gyroscopeMinAngleY:     -15, 
-    //     gyroscopeMaxAngleY:     15,
-    // });
-    
     topBarInit();
 }
 

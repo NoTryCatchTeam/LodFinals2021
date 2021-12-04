@@ -57,7 +57,7 @@ $columns: 12;
   }
 }
 
-@for $i from 1 through $columns {
+@for $i from 1 through 24 {
   .col-gap-#{$i*4} {
     column-gap: $i * 4px;
   } 
@@ -94,8 +94,6 @@ $columns: 12;
 .justify-center {
   justify-content: center;
 }
-
-
 
 .background-gradient-wrapper {
   background: linear-gradient(180deg, #555A6E 0%, #1D1E23 38.02%);
