@@ -24,12 +24,11 @@ namespace LODFinals.Api.Controllers
             _logger = logger;
         }
 
-        // GET: api/values
         [HttpGet("{username}")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<string>))]
         [ProducesResponseType(204)]
         [ProducesResponseType(400, Type = typeof(string))]
-        public async Task<IActionResult> GetAsync(string username, [FromQuery] int start = 0, [FromQuery] int end = 50)
+        public async Task<IActionResult> GetUserPhotosAsync(string username, [FromQuery] int start = 0, [FromQuery] int end = 50)
         {
             try
             {

@@ -15,4 +15,9 @@
     <Folder Include="Definitions\" />
     <Folder Include="Definitions\Constants\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LODFinals.DataModels\LODFinals.DataModels.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

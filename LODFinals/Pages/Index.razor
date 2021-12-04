@@ -1,7 +1,9 @@
 ﻿@page "/"
 @layout AuthorizedBase
+@using LODFinals.DataModels.Responses.MediaMentions
 @inherits LODFinals.Components.BaseAuthorizedComponent
 @inject IJSRuntime _js
+@inject HttpClient _httpClient
 
 <div class="index s-row animate__animated animate__fadeIn">
 
@@ -38,6 +40,9 @@
 
     </div>
 
+    @if (_userMediaMentions?.Any() == true)
+    {
+
     <div class="mentions-box background-gradient-wrapper">
         <div class="mentions-box-content background-gradient">
 
@@ -56,51 +61,33 @@
 
             </div>
 
-            <div class="mention-item">
+            @foreach (var userMediaMention in _userMediaMentions)
+            {
 
-                <a href="#" data-micromodal-trigger="modal-1">
-                    <p class="font-body__s__bold light">"Сколько вы зарабатываете?" О Юрии Дуде и поколении YouTube</p>
-                </a>
+            	<div class="mention-item">
 
-                <p class="mention-details">
-                    <span class="font-body__xxs__bold primary">12 октября 2019</span>
-                    <span class="details-tag font-body__xxxs__bold light">LIVEJOURNAL</span>
-                </p>
+	                <a href="#" data-micromodal-trigger="modal-1">
+	                    <p class="font-body__s__bold light">@userMediaMention.Title</p>
+	                </a>
 
-            </div>
+	                <p class="mention-details">
+	                    <span class="font-body__xxs__bold primary">@userMediaMention.PublishDate.ToString("dd MMMM yyyy")</span>
+	                    <span class="details-tag font-body__xxxs__bold light">@userMediaMention.Media</span>
+	                </p>
 
-            <div class="items-divider"></div>
+           	 	</div>
 
-            <div class="mention-item">
+	            @if (_userMediaMentions.IndexOf(userMediaMention) != _userMediaMentions.Count - 1)
+	            {
+	                <div class="items-divider"></div>
+	            }
 
-                <a href="#" data-micromodal-trigger="modal-1">
-                    <p class="font-body__s__bold light">"Сколько вы зарабатываете?" О Юрии Дуде и поколении YouTube</p>
-                </a>
-
-                <p class="mention-details">
-                    <span class="font-body__xxs__bold primary">12 октября 2019</span>
-                    <span class="details-tag font-body__xxxs__bold light">LIVEJOURNAL</span>
-                </p>
-
-            </div>
-
-            <div class="items-divider"></div>
-
-            <div class="mention-item">
-
-                <a href="#" data-micromodal-trigger="modal-1">
-                    <p class="font-body__s__bold light">"Сколько вы зарабатываете?" О Юрии Дуде и поколении YouTube</p>
-                </a>
-
-                <p class="mention-details">
-                    <span class="font-body__xxs__bold primary">12 октября 2019</span>
-                    <span class="details-tag font-body__xxxs__bold light">LIVEJOURNAL</span>
-                </p>
-
-            </div>
+            }
 
         </div>
     </div>
+    
+}
 
 </div>
 
@@ -264,11 +251,27 @@
 
 @code
 {
+    private IList<MediaMentionItemResponse> _userMediaMentions;
+
+
     protected async override Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
             await _js.InvokeVoidAsync("initIndex");
+
+            await WrappLogicAsync(GtsUserMediaMentionsAsync);
+
+            async Task GtsUserMediaMentionsAsync()
+            {
+                var responseMessage = await _httpClient.GetAsync("/mediamentions/users/dude?start=0&limit=40");
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    _userMediaMentions = JsonConvert.DeserializeObject<IList<MediaMentionItemResponse>>(await responseMessage.Content.ReadAsStringAsync());
+                    StateHasChanged();
+                }
+            }
         }
     }
 }
