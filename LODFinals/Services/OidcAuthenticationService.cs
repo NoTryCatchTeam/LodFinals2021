@@ -97,16 +97,16 @@ namespace LODFinals.Services
 
         private async Task<ClaimsPrincipal> GetUserAsync()
         {
-#if DEBUG
-            var identity = new ClaimsIdentity(new[]
-                {
-                    new Claim(ClaimTypes.Name, "mrfibuli"),
-                }, "Fake authentication type");
-
-            var user = new ClaimsPrincipal(identity);
-
-            return user;
-#endif
+// #if DEBUG
+//             var identity = new ClaimsIdentity(new[]
+//                 {
+//                     new Claim(ClaimTypes.Name, "mrfibuli"),
+//                 }, "Fake authentication type");
+//
+//             var user = new ClaimsPrincipal(identity);
+//
+//             return user;
+// #endif
 
             var accessToken = await _sessionStorageService.GetItemAsStringAsync(SessionConstants.ACCESS_TOKEN);
             var identityToken = await _sessionStorageService.GetItemAsStringAsync(SessionConstants.IDENTITY_TOKEN);

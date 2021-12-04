@@ -1,0 +1,142 @@
+@page "/library"
+@layout AuthorizedBase
+@inject NavigationManager _navigation
+@inject IJSRuntime _js
+
+<div class="library s-row col-gap-40 margin-top-40 justify-space-between">
+
+    <div class="lib-content s-col animate__animated animate__fadeIn">
+
+        <div class="top-banner s-row">
+
+            <div class="top-banner-text s-col row-gap-24">
+
+                <p class="font-header__xxl__bold light">
+                    Всё в одном месте, наконец-то!
+                </p>
+
+                <p class="font-body__m__regular light">
+                    Музыка, фильмы, концерты, игры и друзья – всё в твоей метавселенной!
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="s-row justify-space-between margin-top-80">
+
+            <p class="font-body__m__bold text">
+                Прыжок в другую метавселенную
+            </p>
+
+            <div class="metas s-row col-gap-16">
+                <a href="@(_navigation.Uri)#metas-left">
+                    <p class="s-row">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 19.9201L8.47997 13.4001C7.70997 12.6301 7.70997 11.3701 8.47997 10.6001L15 4.08008" stroke="#696B86" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </p>
+                </a>
+
+                <a href="@(_navigation.Uri)#metas-right">
+                    <p class="s-row">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.90991 19.9201L15.4299 13.4001C16.1999 12.6301 16.1999 11.3701 15.4299 10.6001L8.90991 4.08008" stroke="#696B86" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </p>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="metas-gallery s-row justify-space-between col-gap-32 margin-top-24">
+
+            <p class="meta-gallery-item s-col row-gap-8">
+                <img src="images/roblox.png"/>
+                <span class="font-body__s__bold light">Roboblox</span>
+                <span class="font-body__xxs__regular text">Metaverse Game</span>
+            </p>
+
+            <p class="meta-gallery-item s-col row-gap-8">
+                <img src="images/minecraft.png"/>
+                <span class="font-body__s__bold light">Minecraft</span>
+                <span class="font-body__xxs__regular text">Metaverse Game</span>
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="lib-right background-gradient-wrapper animate__animated animate__fadeInRight">
+        <div class="lib-right-content s-col background-gradient">
+
+            <p class="font-header__xs__bold text">
+                Последние покупки
+            </p>
+
+            <a href="@(_navigation.Uri)#vr" id="vr" data-micromodal-trigger="modal-2">
+                <div class="last-buy-item s-row margin-top-24 col-gap-24">
+
+                    <img src="images/helmet.png"/>
+
+                    <div class="last-buy-info s-col justify-space-between">
+
+                        <div class="s-row justify-space-between align-items-center">
+                            <p class="font-body__xs__bold light">
+                                Helmet #14280
+                            </p>
+                            <p class="last-buy-tag font-body__xxxxs__bold light">
+                                NFT
+                            </p>
+                        </div>
+
+                        <div class="s-row justify-space-between">
+                            <p class="font-body__xxs__regular text">
+                                Tokens
+                            </p>
+                        </div>
+
+                        <img src="images/LarvaLabs.svg"/>
+
+                    </div>
+
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="modal micromodal-slide" id="modal-2" aria-hidden="true">
+
+    <div class="modal__overlay" tabindex="-1">
+        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-2-title">
+            <main class="modal__content s-row" id="modal-2-content">
+                <a-scene>
+                    <a-assets>
+                        <a-asset-item id="tree" src="data/DamagedHelmet.glb"></a-asset-item>
+                    </a-assets>
+
+                    <a-entity gltf-model="#tree" position="0 1.5 -2" background="color: white" laser-controls></a-entity>
+                </a-scene>
+            </main>
+        </div>
+    </div>
+
+    <button class="modal__close" data-micromodal-close aria-label="Close modal">
+        <img class="icon-56" src="images/add.svg">
+    </button>
+
+</div>
+
+@code
+{
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await _js.InvokeVoidAsync("initLibrary");
+        }
+    }
+}

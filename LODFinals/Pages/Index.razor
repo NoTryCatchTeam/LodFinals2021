@@ -42,7 +42,6 @@
 
     @if (_userMediaMentions?.Any() == true)
     {
-
         <div class="mentions-box background-gradient-wrapper">
             <div class="mentions-box-content background-gradient">
 
@@ -63,31 +62,28 @@
 
                 @foreach (var userMediaMention in _userMediaMentions)
                 {
+                    <div class="mention-item">
 
-            	    <div class="mention-item">
+                        <a href="#" data-micromodal-trigger="modal-1">
+                            <p class="font-body__s__bold light">@userMediaMention.Title</p>
+                        </a>
 
-	                    <a href="#" data-micromodal-trigger="modal-1">
-	                        <p class="font-body__s__bold light">@userMediaMention.Title</p>
-	                    </a>
+                        <p class="mention-details">
+                            <span class="font-body__xxs__bold primary">@userMediaMention.PublishDate.ToString("dd MMMM yyyy")</span>
+                            <span class="details-tag font-body__xxxs__bold light">@userMediaMention.Media</span>
+                        </p>
 
-	                    <p class="mention-details">
-	                        <span class="font-body__xxs__bold primary">@userMediaMention.PublishDate.ToString("dd MMMM yyyy")</span>
-	                        <span class="details-tag font-body__xxxs__bold light">@userMediaMention.Media</span>
-	                    </p>
+                    </div>
 
-           	 	    </div>
-
-	                @if (_userMediaMentions.IndexOf(userMediaMention) != _userMediaMentions.Count - 1)
-	                {
-	                    <div class="items-divider"></div>
-	                }
-
+                    @if (_userMediaMentions.IndexOf(userMediaMention) != _userMediaMentions.Count - 1)
+                    {
+                        <div class="items-divider"></div>
+                    }
                 }
 
             </div>
         </div>
-    
-}
+    }
 
 </div>
 
@@ -253,14 +249,13 @@
 {
     private IList<MediaMentionItemResponse> _userMediaMentions;
 
-
     protected async override Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await _js.InvokeVoidAsync("initIndex");
-
             await WrappLogicAsync(GtsUserMediaMentionsAsync);
+
+            await _js.InvokeVoidAsync("initIndex");
 
             async Task GtsUserMediaMentionsAsync()
             {

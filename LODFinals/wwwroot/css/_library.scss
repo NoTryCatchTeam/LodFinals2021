@@ -1,0 +1,90 @@
+@use "colors";
+
+.library {
+  width: 100%;
+  align-items: flex-start;
+}
+
+.lib-content {
+  width: 75%;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+
+  .top-banner {
+    background: url("../images/banner.png") no-repeat;
+    background-size: contain;
+    border-radius: 40px;
+
+    .top-banner-text {
+      width: 55%;
+      padding: 86px 40px;
+    }
+  }
+
+  .metas {
+    a > p {
+      background: colors.$dark-color;
+      border-radius: 12px;
+      padding: 12px;
+      transition: 0.5s;
+
+      svg path {
+        transition: 0.5s;
+      }
+
+      &:hover {
+        background: colors.$primary-color;
+        box-shadow: 0 4px 10px rgba(26, 128, 216, 0.65);
+
+        svg path {
+          stroke: white;
+        }
+      }
+    }
+  }
+
+  .metas-gallery {
+    p {
+      img {
+        width: 100%;
+        transform: scale(1.04);
+      }
+    }
+  }
+}
+
+.lib-right {
+  width: 20%;
+
+  .lib-right-content {
+    padding: 32px;
+
+    .last-buy-item {
+      img { 
+        width: 64px;
+        border-radius: 16px;
+      }
+
+      .last-buy-info {
+        width: 100%;
+
+        .last-buy-tag {
+          background: colors.$secondary-color;
+          border-radius: 4px;
+          padding: 2px 4px;
+        }
+      }
+    }
+  }
+}
+
+#modal-2 .modal__container {
+  height: 100%;
+  
+  .modal__content {
+    height: 100%;
+  }
+}
+
+
+
