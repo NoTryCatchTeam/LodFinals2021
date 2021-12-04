@@ -11,5 +11,7 @@ namespace LODFinals.DataModels.Responses.MediaMentions
         public DateTime PublishDate { get; set; }
 
         public string? Media { get; set; }
+
+        public string? Text { get; set; }
     }
 }

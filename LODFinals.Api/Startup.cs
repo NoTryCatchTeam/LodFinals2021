@@ -1,3 +1,4 @@
+using LODFinals.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -37,6 +38,9 @@ namespace LODFinals.Api
                             .AllowAnyMethod();
                     });
             });
+
+            services.AddTransient<ISolrRestService, SolrRestService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

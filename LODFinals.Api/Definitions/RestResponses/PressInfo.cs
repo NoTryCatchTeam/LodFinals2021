@@ -1,10 +1,12 @@
-﻿namespace LODFinals.Api.Definitions.RestResponses
+﻿using System.Collections.Generic;
+
+namespace LODFinals.Api.Definitions.RestResponses
 {
     public class PressInfo
     {
-        public string Title {get;set;}
-        public string Text { get;set;}
+        public IEnumerable<string> title {get;set;}
+        public IEnumerable<string> text { get;set;}
         
-        public string Source { get;set;}
+        public IEnumerable<string> source { get;set;}
     }
 }

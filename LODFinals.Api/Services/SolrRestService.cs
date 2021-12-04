@@ -18,16 +18,16 @@ namespace LODFinals.Api.Services
         public async Task<IEnumerable<PressInfo>> GetPressInfoAsync(string username)
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
-            "http://45.134.255.154:30083/solr/dud/select?indent=true&q.op=OR&q=*%3A*&qt={username}");
+            $"http://45.134.255.154:30083/solr/dud/select?indent=true&q.op=OR&q=*%3A*&qt={username}");
 
             var client = _clientFactory.CreateClient();
 
             var response = await client.SendAsync(request);
             using var responseStream = await response.Content.ReadAsStreamAsync();
             var result = await JsonSerializer.DeserializeAsync
-                <IEnumerable<PressInfo>>(responseStream);
+                <SolrApiResponse<PressInfo>>(responseStream);
 
-            return result;
+            return result.response.docs;
         }
     }
 }
